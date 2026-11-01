@@ -396,7 +396,7 @@ export const themes: Record<ThemeId, Theme> = {
 };
 
 /** The theme that loads first */
-export const defaultTheme: ThemeId = "purple-dark";
+export const defaultTheme: ThemeId = "deep-green";
 
 /**
  * Converts a theme object into CSS custom properties string.

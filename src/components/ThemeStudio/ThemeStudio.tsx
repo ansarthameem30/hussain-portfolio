@@ -204,12 +204,12 @@ export default function ThemeStudio() {
             {theme.isLight ? (
               <>
                 <MoonIcon size={14} />
-                <span>Toggle to Royal Amethyst</span>
+                <span>Toggle to Obsidian Dark</span>
               </>
             ) : (
               <>
                 <SunIcon size={14} />
-                <span>Toggle to Daylight Crisp</span>
+                <span>Toggle to Executive Light</span>
               </>
             )}
           </button>

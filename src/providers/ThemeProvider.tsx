@@ -40,9 +40,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleLightDark = () => {
     const currentTheme = themes[themeId] || themes[defaultTheme];
     if (currentTheme.isLight) {
-      setTheme('purple-dark');
+      if (themeId === 'purple-light') {
+        setTheme('purple-dark');
+      } else {
+        setTheme('deep-green');
+      }
     } else {
-      setTheme('purple-light');
+      if (themeId === 'purple-dark') {
+        setTheme('purple-light');
+      } else {
+        setTheme('light');
+      }
     }
   };
 

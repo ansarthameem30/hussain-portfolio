@@ -78,7 +78,7 @@ export default function Header() {
               className={`${styles.themeQuickBtn} ${theme.isLight ? styles.themeBtnLight : ''}`}
               onClick={toggleLightDark}
               aria-label="Toggle light or dark mode"
-              title={theme.isLight ? 'Switch to Royal Amethyst Dark Mode' : 'Switch to Daylight Light Mode'}
+              title={theme.isLight ? 'Switch to Dark Mode (Emerald Obsidian)' : 'Switch to Executive Light Mode'}
             >
               {theme.isLight ? <MoonIcon size={17} /> : <SunIcon size={17} />}
             </button>
