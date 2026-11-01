@@ -1,0 +1,91 @@
+/**
+ * Certifications configuration
+ * Paid-media certs listed first, honest status chips.
+ */
+
+export type CertStatus = "active" | "expired" | "no-expiry";
+
+export interface Certification {
+  id: string;
+  name: string;
+  issuer: string;
+  issued: string;
+  status: CertStatus;
+  statusLabel: string;
+  credentialUrl?: string; // LinkedIn or issuer URL
+}
+
+export const certificationsConfig: Certification[] = [
+  {
+    id: "cert-google-ads",
+    name: "Google Ads Search Certification",
+    issuer: "Google Skillshop",
+    issued: "Aug 2025",
+    status: "expired",
+    statusLabel: "Expired Aug 2026",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-google-ads-masterclass",
+    name: "The Complete Google Ads Masterclass 2025",
+    issuer: "Udemy",
+    issued: "Aug 2025",
+    status: "no-expiry",
+    statusLabel: "No expiry",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-ms-search",
+    name: "Microsoft Advertising Search Certification",
+    issuer: "Microsoft",
+    issued: "Jan 2025",
+    status: "expired",
+    statusLabel: "Expired Jan 2026",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-ms-display",
+    name: "Microsoft Advertising Display & Video Certification",
+    issuer: "Microsoft",
+    issued: "Jan 2025",
+    status: "expired",
+    statusLabel: "Expired Jan 2026",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-semrush",
+    name: "Keyword Research Essentials with Semrush",
+    issuer: "Semrush",
+    issued: "Oct 2025",
+    status: "active",
+    statusLabel: "Expires Oct 2026",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-ai-marketing",
+    name: "AI-Powered Digital Marketing Specialist Course",
+    issuer: "Tuberbug Digital Marketing Academy",
+    issued: "Dec 2025",
+    status: "no-expiry",
+    statusLabel: "No expiry",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-ai-guide",
+    name: "The Complete AI Guide: 50+ Generative AI Tools",
+    issuer: "Udemy",
+    issued: "Jan 2026",
+    status: "no-expiry",
+    statusLabel: "No expiry",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+  {
+    id: "cert-wordpress",
+    name: "WordPress 2025: The Complete WordPress Website Course",
+    issuer: "Udemy",
+    issued: "Sep 2025",
+    status: "no-expiry",
+    statusLabel: "No expiry",
+    credentialUrl: "https://www.linkedin.com/in/malik-hussain-008003222",
+  },
+];

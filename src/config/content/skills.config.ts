@@ -1,0 +1,78 @@
+/**
+ * Skills & Expertise configuration
+ * Displayed as grouped chips — no percentage bars.
+ */
+
+export interface SkillGroup {
+  id: string;
+  group: string;
+  skills: string[];
+}
+
+export const skillsConfig: SkillGroup[] = [
+  {
+    id: "skills-platforms",
+    group: "Platforms",
+    skills: ["Google Ads", "Microsoft Ads", "Yahoo Ads", "Meta Ads", "YouTube Ads"],
+  },
+  {
+    id: "skills-campaign-types",
+    group: "Campaign Types",
+    skills: [
+      "Search",
+      "Performance Max",
+      "Shopping & Merchant Center",
+      "Display",
+      "YouTube",
+      "Meta Lead Generation",
+      "Meta Conversion Campaigns",
+    ],
+  },
+  {
+    id: "skills-optimisation",
+    group: "Optimisation",
+    skills: [
+      "Smart Bidding",
+      "Keyword Research",
+      "Search Query Analysis",
+      "Negative Keywords",
+      "Budget Pacing",
+      "Ad Copy Testing",
+      "Audience Testing",
+    ],
+  },
+  {
+    id: "skills-tracking",
+    group: "Tracking & Reporting",
+    skills: [
+      "CPL",
+      "Conversions",
+      "CTR",
+      "CPC",
+      "Impression Share",
+      "Quality Score",
+      "Excel Reports",
+      "Client-ready Campaign Reviews",
+    ],
+  },
+  {
+    id: "skills-creative",
+    group: "Creative",
+    skills: ["Social Media Posts", "Reels"],
+  },
+  {
+    id: "skills-leadership",
+    group: "Leadership",
+    skills: ["Live Campaign Review Sessions", "New Joiner Training"],
+  },
+  {
+    id: "skills-foundations",
+    group: "Foundations",
+    skills: [
+      "SEO Fundamentals",
+      "Semrush Keyword Research",
+      "AI Tools for Marketing",
+      "WordPress",
+    ],
+  },
+];

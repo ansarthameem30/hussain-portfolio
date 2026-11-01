@@ -1,0 +1,471 @@
+.section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.header {
+  margin-bottom: 3rem;
+  max-width: 48rem;
+}
+
+.title {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.subheading {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 1. Three Checks */
+.threeChecksWrapper {
+  margin-bottom: 3.5rem;
+}
+
+.subHeaderBox {
+  margin-bottom: 1.5rem;
+}
+
+.blockTitle {
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.blockDesc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.checksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.checkCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: transform var(--duration-fast) var(--easing),
+              border-color var(--duration-fast) var(--easing);
+  box-shadow: var(--shadow-card);
+}
+
+.checkCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 210, 63, 0.35);
+}
+
+.checkHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkNumber {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--accent);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.checkBadge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.checkTitle {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.checkDetail {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 2. Bottom Grid */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Book a Call Card */
+.callCard {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 210, 63, 0.35);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: var(--shadow-card);
+}
+
+.callTag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  margin-bottom: 0.6rem;
+}
+
+.callTitle {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.callDesc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.callMeta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+}
+
+.metaVal {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.metaIcon {
+  color: var(--accent);
+}
+
+.perksList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.perkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.perkCheck {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.callActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* Secondary Column */
+.secondaryCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Recommendations Card */
+.recCard {
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.recHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.recTitle {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.recBadge {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+
+.recMessage {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.15rem;
+}
+
+.recFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.recLockIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Sample Card */
+.sampleCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.sampleTag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  margin-bottom: 0.35rem;
+}
+
+.sampleTitle {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.sampleSubtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.sampleDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.modalContent {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 210, 63, 0.35);
+  border-radius: var(--radius-xl);
+  max-width: 680px;
+  width: 100%;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+.modalClose {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalClose:hover {
+  color: var(--text-primary);
+}
+
+.modalHeader {
+  margin-bottom: 1.5rem;
+}
+
+.modalTitle {
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.modalMeta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sampleDeckPreview {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.deckSectionHead {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+  margin-bottom: 0.6rem;
+}
+
+.deckTable {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.deckTableRow {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.78rem;
+  gap: 0.2rem;
+}
+
+.deckTableRow span {
+  color: var(--text-muted);
+}
+
+.deckTableRow strong {
+  color: var(--text-primary);
+  font-size: 0.88rem;
+}
+
+.deckBulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.deckBulletList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.deckCheck {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modalNote {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .checksGrid {
+    grid-template-columns: 1fr;
+  }
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+  .callActions {
+    flex-direction: column;
+  }
+  .callActions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    margin-bottom: 2rem;
+  }
+  .threeChecksWrapper {
+    margin-bottom: 2.5rem;
+  }
+  .modalFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

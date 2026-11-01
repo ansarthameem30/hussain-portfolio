@@ -1,0 +1,54 @@
+/**
+ * Experience & Education timeline configuration
+ * Newest entry first.
+ */
+
+export interface ExperienceEntry {
+  id: string;
+  type: "work" | "education";
+  title: string;
+  organisation: string;
+  location: string;
+  period: string;
+  highlights: string[];
+  badge?: string; // e.g. "Promoted"
+}
+
+export const experienceConfig: ExperienceEntry[] = [
+  {
+    id: "exp-senior-cm",
+    type: "work",
+    title: "Senior Campaign Manager",
+    organisation: "iOPEX Technologies",
+    location: "Chennai",
+    period: "July 2023 – Present",
+    highlights: [
+      "Manage lead-generation campaigns on Google, Microsoft, Yahoo and Meta for multiple clients, within a book of business of roughly $4–5M in monthly ad spend.",
+      "Grew leads and cut cost per lead across accounts, and earned $500K+ in approved client budget increases.",
+      "Prepare client-ready campaign reviews with clear keyword, budget and bidding recommendations.",
+      "Run live campaign review sessions that train new joiners.",
+    ],
+  },
+  {
+    id: "exp-media-analyst",
+    type: "work",
+    title: "Media Analyst",
+    organisation: "iOPEX Technologies",
+    location: "Chennai",
+    period: "July 2022 – July 2023",
+    badge: "Promoted in 1 year",
+    highlights: [
+      "Supported optimisation, reporting and budget changes on Google and Yahoo accounts.",
+      "Promoted to Senior Campaign Manager after one year.",
+    ],
+  },
+  {
+    id: "exp-education",
+    type: "education",
+    title: "B.E. Mechanical Engineering",
+    organisation: "National College of Engineering",
+    location: "Tirunelveli",
+    period: "2015 – 2019",
+    highlights: [],
+  },
+];

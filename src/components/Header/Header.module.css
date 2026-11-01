@@ -1,0 +1,412 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.85rem 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+  transition: all var(--duration-fast) var(--easing);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  padding: 0.7rem 0;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoName {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  transition: color var(--duration-fast) var(--easing);
+}
+
+.logo:hover .logoName {
+  color: var(--accent);
+}
+
+.logoRole {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+
+/* Desktop nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navLink {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--easing);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  background: var(--surface-overlay);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Quick Sun/Moon Toggle */
+.themeQuickBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--surface-overlay);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing);
+  flex-shrink: 0;
+}
+
+.themeQuickBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.themeBtnLight {
+  color: #0284c7;
+}
+
+/* Theme Studio Trigger */
+.themeStudioBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--surface-overlay);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--duration-fast) var(--easing);
+  flex-shrink: 0;
+}
+
+.themeStudioBtn:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-subtle);
+}
+
+.themeStudioLabel {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+}
+
+.themeStudioCount {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-full);
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+/* WhatsApp Icon Button */
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: var(--radius-md);
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.08);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--easing);
+  flex-shrink: 0;
+}
+
+.whatsappBtn:hover {
+  border-color: #25d366;
+  background: rgba(37, 211, 102, 0.2);
+  transform: scale(1.05);
+}
+
+.desktopResumeBtn {
+  font-size: 0.82rem;
+  padding: 0.45rem 1rem;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-overlay);
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) var(--easing);
+  flex-shrink: 0;
+}
+
+.hamburger:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+.hamburgerBars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+}
+
+.hamburgerIcon {
+  color: var(--text-primary);
+}
+
+/* Mobile Nav Drawer Overlay */
+.mobileNavOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.mobileNavContent {
+  width: 85%;
+  max-width: 360px;
+  height: 100%;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+  animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.mobileNavHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobileNavTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.mobileNavClose {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobileNavLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  background: var(--surface-overlay);
+  border: 1px solid transparent;
+  transition: all var(--duration-fast) var(--easing);
+}
+
+.mobileNavLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.navArrow {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Mobile Theme Section */
+.mobileThemeSection {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
+}
+
+.mobileSectionLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  font-family: var(--font-mono);
+}
+
+.mobileThemeStudioBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--surface-hover);
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--duration-fast) var(--easing);
+}
+
+.mobileThemeStudioBtn:hover {
+  box-shadow: 0 0 20px var(--accent-subtle);
+}
+
+.mobileThemeStudioText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mobileThemeStudioText strong {
+  font-size: 0.88rem;
+  color: var(--accent);
+}
+
+.mobileThemeStudioText small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Mobile CTAs */
+.mobileCtas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobileCtas .btn {
+  width: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 990px) {
+  .themeStudioLabel {
+    display: none;
+  }
+  .themeStudioBtn {
+    padding: 0 0.65rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav {
+    display: none;
+  }
+  .desktopResumeBtn {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .whatsappBtn {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoRole {
+    display: none;
+  }
+}
