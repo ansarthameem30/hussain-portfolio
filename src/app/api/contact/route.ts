@@ -23,6 +23,27 @@ export async function POST(request: Request) {
       status: 'new',
     };
 
+    // If Web3Forms Access Key is configured, dispatch free email
+    const web3FormsKey = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (web3FormsKey) {
+      try {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: web3FormsKey,
+            name: leadRecord.name,
+            email: leadRecord.email,
+            subject: leadRecord.subject,
+            message: leadRecord.message,
+            from_name: 'Abdul Malik Portfolio Lead',
+          }),
+        });
+      } catch (e) {
+        console.warn('Web3Forms dispatch error:', e);
+      }
+    }
+
     // If MongoDB is configured, persist the lead
     const db = await getDatabase();
     if (db) {
