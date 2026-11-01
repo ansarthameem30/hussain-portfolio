@@ -73,8 +73,8 @@ export default function About() {
                   <BriefcaseIcon size={16} />
                 </div>
                 <div>
-                  <strong>$4M–$5M Monthly Spend</strong>
-                  <p>Direct oversight of cross-channel multi-client ad accounts.</p>
+                  <strong>$4M–$5M Book of Business</strong>
+                  <p>My team's book of business is about $4–5M a month across multiple clients.</p>
                 </div>
               </div>
 

@@ -73,10 +73,10 @@ export default function ChecksAndCall() {
           </div>
         </div>
 
-        {/* 2. Grid with Recommendations, Book a Call & Sample Review */}
+        {/* 2. Grid with Book a Call & Sample Review */}
         <div className={styles.bottomGrid}>
           {/* Left: Book a 15-min call Card */}
-          <div className={styles.callCard}>
+          <div id="book-call" className={styles.callCard}>
             <div className={styles.callTag}>Direct Diagnostic Access</div>
             <h3 className={styles.callTitle}>{checksConfig.bookCall.title}</h3>
             <p className={styles.callDesc}>{checksConfig.bookCall.description}</p>
@@ -138,38 +138,32 @@ export default function ChecksAndCall() {
             </div>
           </div>
 
-          {/* Right column: Honest Recommendations + Sample Review */}
+          {/* Right column: Sample Review Artifact */}
           <div className={styles.secondaryCol}>
-            {/* Recommendations Card */}
-            <div className={styles.recCard}>
-              <div className={styles.recHeader}>
-                <h4 className={styles.recTitle}>{checksConfig.recommendations.title}</h4>
-                <span className={styles.recBadge}>Verified Policy</span>
-              </div>
-              <p className={styles.recMessage}>
-                {checksConfig.recommendations.placeholderMessage}
-              </p>
-              <div className={styles.recFooter}>
-                <LockIcon size={14} className={styles.recLockIcon} />
-                <span className={styles.recNote}>{checksConfig.recommendations.note}</span>
-              </div>
-            </div>
-
-            {/* Extras 2: Sample Campaign Review Card */}
             <div className={styles.sampleCard}>
               <div className={styles.sampleTag}>Reporting Artifact</div>
               <h4 className={styles.sampleTitle}>{checksConfig.sampleReport.title}</h4>
               <p className={styles.sampleSubtitle}>{checksConfig.sampleReport.subtitle}</p>
               <p className={styles.sampleDesc}>{checksConfig.sampleReport.description}</p>
 
-              <button
-                id="btn-sample-report"
-                className="btn btn--secondary btn--sm"
-                onClick={() => setShowSampleModal(true)}
-              >
-                <DownloadIcon size={14} />
-                <span>{checksConfig.sampleReport.buttonLabel}</span>
-              </button>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+                <a
+                  id="btn-sample-report"
+                  href="/sample-campaign-review.pdf"
+                  download="sample-campaign-review.pdf"
+                  className="btn btn--primary btn--sm"
+                >
+                  <DownloadIcon size={14} />
+                  <span>See how I report (PDF)</span>
+                </a>
+                <button
+                  id="btn-preview-sample-report"
+                  className="btn btn--secondary btn--sm"
+                  onClick={() => setShowSampleModal(true)}
+                >
+                  <span>Quick Preview</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function Results() {
         {/* Section Header */}
         <div className={styles.sectionHeader}>
           <div className="section-badge">
-            <span>Verified Track Record</span>
+            <span>Performance Track Record</span>
           </div>
           <h2 className={styles.heading}>What the data shows</h2>
           <p className={styles.subheading}>

@@ -125,8 +125,28 @@ export default function Contact() {
                 <div className={styles.successIcon}>
                   <CheckCircleIcon size={32} />
                 </div>
-                <h3>Message received</h3>
-                <p>{contactConfig.form.successMessage}</p>
+                <h3>Message received!</h3>
+                <p>Thank you for reaching out. For immediate response within the day, you can also send this note directly via WhatsApp or Email:</p>
+                <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.25rem', flexWrap: 'wrap' }}>
+                  <a
+                    href={`https://wa.me/917395879451?text=${encodeURIComponent(
+                      `Hi Malik, I sent a note through your portfolio (${form.name}): "${form.message}"`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--primary btn--sm"
+                  >
+                    <WhatsAppIcon size={14} />
+                    <span>Open in WhatsApp</span>
+                  </a>
+                  <a
+                    href={`mailto:malikhussain3013@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(form.name || 'Visitor')}&body=${encodeURIComponent(form.message)}`}
+                    className="btn btn--secondary btn--sm"
+                  >
+                    <MailIcon size={14} />
+                    <span>Send via Email</span>
+                  </a>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form} noValidate>

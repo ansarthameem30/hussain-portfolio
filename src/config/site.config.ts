@@ -16,7 +16,7 @@ export const siteConfig = {
 
   // ─── SEO ───────────────────────────────────────────────────────────────────
   description:
-    "Senior Campaign Manager with 4+ years running $4–5M+ monthly ad spend across Google Ads, Microsoft Ads, Meta, and YouTube. Cutting cost-per-lead up to 90% and growing qualified pipeline.",
+    "Senior Performance Marketer with 4+ years in Google, Microsoft and Meta Ads. My team's book of business is about $4–5M a month, with $500K+ in approved budget growth. Leads up 141%, cost per lead down 56%.",
   keywords: [
     "Abdul Malik Hussain",
     "Senior Campaign Manager",
@@ -32,7 +32,7 @@ export const siteConfig = {
     "Chennai",
     "Digital Marketing",
   ],
-  canonicalUrl: "https://abdulmalik.dev",
+  canonicalUrl: "https://hussain-portfolio-tau.vercel.app",
 
   // ─── Open Graph / Social Sharing ───────────────────────────────────────────
   ogImage: "/og-image.png",

@@ -13,8 +13,9 @@ interface Stat {
   decimals?: number;
 }
 
-function useCountUp(target: number, duration = 2000, started = false) {
-  const [count, setCount] = useState(0);
+function useCountUp(target: number, duration = 1600, started = false) {
+  // Always initialize with target so SSR, initial load, and LinkedIn in-app browser show real values immediately
+  const [count, setCount] = useState(target);
 
   useEffect(() => {
     if (!started) return;
@@ -30,6 +31,7 @@ function useCountUp(target: number, duration = 2000, started = false) {
       if (progress < 1) raf = requestAnimationFrame(step);
     };
 
+    setCount(0);
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
   }, [target, duration, started]);

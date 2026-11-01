@@ -148,7 +148,7 @@ export default function Hero() {
               href="#results"
               className={`btn btn--primary ${styles.actionBtn}`}
             >
-              <span>Explore Verified Results</span>
+              <span>See my results</span>
               <ArrowRightIcon size={15} />
             </a>
             <a
@@ -195,7 +195,7 @@ export default function Hero() {
                 <span className={styles.livePulseDot} />
                 <span>Live Flight Simulator</span>
               </div>
-              <span className={styles.deckLiveTag}>Audited Benchmark</span>
+              <span className={styles.deckLiveTag}>Based on one of my accounts</span>
             </div>
 
             {/* Vertical Switcher Tabs */}
@@ -353,7 +353,7 @@ export default function Hero() {
       {/* Viewport Bottom Anchor Indicator */}
       <a href="#stats" className={styles.scrollIndicator} aria-label="Scroll down to stats">
         <span className={styles.scrollDot} />
-        <span className={styles.scrollText}>Scroll for audited client telemetry</span>
+        <span className={styles.scrollText}>Scroll for results</span>
         <span className={styles.scrollChevron}>↓</span>
       </a>
     </section>

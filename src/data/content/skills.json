@@ -14,10 +14,10 @@
     "id": "skills-campaign-strategy",
     "group": "Strategy & Optimisation",
     "skills": [
-      "Smart Bidding & Target CPA / ROAS",
+      "Smart Bidding & Target CPA",
       "Keyword Research & Search Query Sculpting",
       "A/B Copy & Landing Page Testing",
-      "CPL & ROAS Optimization",
+      "CPL Optimization",
       "Conversion Rate Optimization (CRO)",
       "Client Budget Growth & Upselling",
       "Multi-Market Campaign Management",
@@ -30,10 +30,7 @@
     "id": "skills-analytics-martech",
     "group": "Analytics & MarTech Stack",
     "skills": [
-      "Google Analytics 4 (GA4)",
-      "Google Tag Manager (GTM)",
       "Google Search Console",
-      "Data Studio / Looker Studio",
       "NinjaCat",
       "TapClicks",
       "Simpli.fi",
@@ -47,7 +44,7 @@
     "group": "Industry Expertise",
     "skills": [
       "Home Services (HVAC, Roofing, Windows, Bathrooms)",
-      "Retail & E-commerce",
+      "Retail",
       "Healthcare",
       "Real Estate",
       "Powersports",
@@ -72,7 +69,7 @@
       "Client-Facing Performance Reviews",
       "Executive Stakeholder Presentations",
       "New Joiner Analyst Training",
-      "Live Account Audit Sessions"
+      "Live Account Review Sessions"
     ]
   }
 ]

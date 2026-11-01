@@ -107,7 +107,7 @@ export default function CreativeGallery() {
                     {item.format === 'reel' ? (
                       <>
                         <PlayIcon size={10} />
-                        Reel {item.duration}
+                        Reel (12s)
                       </>
                     ) : (
                       <>

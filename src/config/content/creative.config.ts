@@ -61,7 +61,7 @@ export const creativeConfig = {
       hook: "“AC stopped at 2 AM in July? Here's who actually picks up.”",
       description:
         "Fast-paced pain-point reel showing immediate response guarantee and verified technician dispatch within 45 mins.",
-      duration: "0:15s",
+      duration: "12s",
       ratio: "9:16",
       tags: ["Emergency Dispatch", "Meta Video", "Call-to-Action"],
       performanceHighlight: "Tested 4.1% CTR · High hook retention",
@@ -100,7 +100,7 @@ export const creativeConfig = {
       hook: "“Knee pain keeping you off the field this weekend?”",
       description:
         "Direct patient-centric motion graphic leading directly into one-click WhatsApp appointment scheduler.",
-      duration: "0:18s",
+      duration: "12s",
       ratio: "9:16",
       tags: ["Patient Acquisition", "Direct Booking", "Meta Video"],
       performanceHighlight: "2.4x higher conversion than display",
@@ -139,7 +139,7 @@ export const creativeConfig = {
       hook: "Turn up your volume. That’s what precision tuning sounds like.",
       description:
         "High-adrenaline short video syncing dyno-run audio with staged performance upgrade milestones.",
-      duration: "0:12s",
+      duration: "12s",
       ratio: "9:16",
       tags: ["Sound First", "Enthusiast Audience", "Reels/TikTok"],
       performanceHighlight: "68% 3-sec thumb-stop rate",
@@ -161,7 +161,7 @@ export const creativeConfig = {
         "Data-dense visual graphic built for gearheads who prioritize real telemetry and dyno sheets over fluff.",
       ratio: "1:1",
       tags: ["Dyno Verified", "High Intent", "Search & Social"],
-      performanceHighlight: "3.2x Return on Ad Spend angle",
+      performanceHighlight: "+145% click-through rate angle",
       colorScheme: {
         bg: "linear-gradient(145deg, #160e14, #080407)",
         accent: "#fb7185",
@@ -178,7 +178,7 @@ export const creativeConfig = {
       hook: "“No ‘DM for price’. Here’s exactly what ₹1.2 Cr buys in OMR.”",
       description:
         "Busts real estate cliches by disclosing genuine pricing upfront, eliminating unqualified leads instantly.",
-      duration: "0:20s",
+      duration: "12s",
       ratio: "9:16",
       tags: ["Price Transparency", "Qualified Buyer", "Instagram Reel"],
       performanceHighlight: "-48% unqualified lead inquiries",
@@ -217,7 +217,7 @@ export const creativeConfig = {
       hook: "Look for the laser-etched BIS Hallmark. Here’s how.",
       description:
         "Macro close-up video establishing authenticity, hallmark purity, and heritage craftsmanship.",
-      duration: "0:14s",
+      duration: "12s",
       ratio: "9:16",
       tags: ["BIS 916", "Heritage Trust", "Wedding Season"],
       performanceHighlight: "+85% save rate on Meta",
@@ -256,7 +256,7 @@ export const creativeConfig = {
       hook: "Client meeting, deep work, dinner drinks.",
       description:
         "Snappy transition reel demonstrating versatility of wrinkle-free cotton linen apparel for men.",
-      duration: "0:16s",
+      duration: "12s",
       ratio: "9:16",
       tags: ["Style Transitions", "Capsule Wardrobe", "Meta D2C"],
       performanceHighlight: "+40% repeat click-throughs",

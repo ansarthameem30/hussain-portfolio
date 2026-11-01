@@ -173,12 +173,13 @@ export default function LeadCalculator() {
               </a>
 
               <a
-                href="#checks"
+                href="/sample-campaign-review.pdf"
+                download="sample-campaign-review.pdf"
                 className="btn btn--secondary btn--sm"
                 id="btn-sample-report"
               >
                 <DownloadIcon size={14} />
-                <span>See sample reporting deck</span>
+                <span>See sample reporting deck (PDF)</span>
               </a>
             </div>
           </div>
