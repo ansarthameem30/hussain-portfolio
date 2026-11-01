@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { resultsConfig } from '@/config/content/results.config';
+import resultsConfig from '@/data/content/projects.json';
 import styles from './Results.module.css';
 import {
   TrendingUpIcon,

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { contactConfig } from '@/config/content/contact.config';
+import profileData from '@/data/content/profile.json';
 import { siteConfig } from '@/config/site.config';
 import styles from './Contact.module.css';
 import {
@@ -60,7 +61,7 @@ export default function Contact() {
             <div className={styles.links}>
               <a
                 id="contact-email"
-                href={`mailto:${contactConfig.links.email}`}
+                href={`mailto:${profileData.contact?.email || contactConfig.links.email}`}
                 className={styles.link}
               >
                 <div className={styles.linkIconWrap}>
@@ -68,14 +69,14 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className={styles.linkLabel}>Email directly</span>
-                  <span className={styles.linkValue}>{contactConfig.links.email}</span>
+                  <span className={styles.linkValue}>{profileData.contact?.email || contactConfig.links.email}</span>
                 </div>
               </a>
 
               <a
                 id="contact-whatsapp"
-                href={`https://wa.me/${contactConfig.links.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
-                  contactConfig.links.whatsappMessage
+                href={`https://wa.me/${(profileData.contact?.whatsapp || contactConfig.links.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(
+                  profileData.contact?.whatsappMessage || contactConfig.links.whatsappMessage
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -92,7 +93,7 @@ export default function Contact() {
 
               <a
                 id="contact-linkedin"
-                href={contactConfig.links.linkedin}
+                href={profileData.contact?.linkedin || contactConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -108,7 +109,7 @@ export default function Contact() {
 
               <a
                 id="contact-calendar"
-                href="#checks"
+                href={profileData.contact?.calendarLink || '#checks'}
                 className={`btn btn--secondary ${styles.calBtn}`}
               >
                 <CalendarIcon size={16} />

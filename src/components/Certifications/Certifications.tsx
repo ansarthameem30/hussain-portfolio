@@ -1,4 +1,4 @@
-import { certificationsConfig } from '@/config/content/certifications.config';
+import certificationsConfig from '@/data/content/certifications.json';
 import styles from './Certifications.module.css';
 import { AwardIcon, ArrowUpRightIcon } from '@/components/Icons/Icons';
 

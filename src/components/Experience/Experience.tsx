@@ -1,4 +1,4 @@
-import { experienceConfig } from '@/config/content/experience.config';
+import experienceConfig from '@/data/content/experience.json';
 import styles from './Experience.module.css';
 import {
   BriefcaseIcon,

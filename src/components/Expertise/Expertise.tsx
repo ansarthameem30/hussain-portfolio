@@ -1,4 +1,4 @@
-import { skillsConfig } from '@/config/content/skills.config';
+import skillsConfig from '@/data/content/skills.json';
 import styles from './Expertise.module.css';
 
 export default function Expertise() {

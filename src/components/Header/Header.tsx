@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site.config';
+import profileData from '@/data/content/profile.json';
 import { useTheme } from '@/providers/ThemeProvider';
 import ThemeStudio from '@/components/ThemeStudio/ThemeStudio';
 import styles from './Header.module.css';
@@ -53,8 +54,8 @@ export default function Header() {
         <div className={`container ${styles.inner}`}>
           {/* Logo */}
           <Link href="#hero" className={styles.logo} onClick={handleNavClick}>
-            <span className={styles.logoName}>{siteConfig.shortTitle}</span>
-            <span className={styles.logoRole}>{siteConfig.role}</span>
+            <span className={styles.logoName}>{profileData.shortTitle || siteConfig.shortTitle}</span>
+            <span className={styles.logoRole}>{profileData.role || siteConfig.role}</span>
           </Link>
 
           {/* Desktop Nav */}

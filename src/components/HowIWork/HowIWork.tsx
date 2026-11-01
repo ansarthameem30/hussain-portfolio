@@ -1,4 +1,5 @@
-import { howIWorkConfig } from '@/config/content/howIWork.config';
+import workflowData from '@/data/content/workflow.json';
+const howIWorkConfig = workflowData.processSteps;
 import styles from './HowIWork.module.css';
 import {
   SearchCheckIcon,

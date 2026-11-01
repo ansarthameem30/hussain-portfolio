@@ -1,8 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { statsConfig, type Stat } from '@/config/content/stats.config';
+import statsConfig from '@/data/content/stats.json';
 import styles from './StatsStrip.module.css';
+
+interface Stat {
+  id: string;
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  decimals?: number;
+}
 
 function useCountUp(target: number, duration = 2000, started = false) {
   const [count, setCount] = useState(0);

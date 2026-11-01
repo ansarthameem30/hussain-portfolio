@@ -1,4 +1,4 @@
-import { aboutConfig } from '@/config/content/about.config';
+import profileData from '@/data/content/profile.json';
 import { siteConfig } from '@/config/site.config';
 import styles from './About.module.css';
 import Image from 'next/image';
@@ -42,7 +42,7 @@ export default function About() {
 
             {/* Quick facts inside the left card */}
             <div className={styles.quickFacts}>
-              {aboutConfig.quickFacts.map((fact) => (
+              {profileData.quickFacts.map((fact) => (
                 <div key={fact.label} className={styles.fact}>
                   <span className={styles.factLabel}>{fact.label}</span>
                   <span className={styles.factValue}>{fact.value}</span>
@@ -54,11 +54,11 @@ export default function About() {
           {/* Right Card: Editorial Story, Pillars & CTAs (Wrapped matching card) */}
           <div className={styles.storyCard}>
             <p className={styles.leadPara}>
-              &ldquo;{aboutConfig.shortBio}&rdquo;
+              &ldquo;{profileData.shortBio}&rdquo;
             </p>
 
             <div className={styles.bioParagraphs}>
-              {aboutConfig.fullBio.map((para, i) => (
+              {profileData.fullBio.map((para, i) => (
                 <p key={i} className={styles.bioPara}>
                   {para}
                 </p>

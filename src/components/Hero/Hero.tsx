@@ -9,6 +9,7 @@ import {
   TrendingUpIcon,
   CheckCircleIcon,
 } from '@/components/Icons/Icons';
+import profileData from '@/data/content/profile.json';
 
 interface VerticalPreset {
   id: string;
@@ -111,33 +112,28 @@ export default function Hero() {
             <div className={styles.liveTelemetryBadge}>
               <span className={styles.livePulseDot} />
               <span className={styles.liveBadgeText}>
-                Senior Performance Marketer · $4M–$5M Monthly Spend Oversight
+                {profileData.role} · $4M–$5M Monthly Spend Oversight
               </span>
             </div>
           </div>
 
           <h1 className={`${styles.headline} animate-fade-up delay-2`}>
-            Leads up <span className={styles.metricSurge}>+{dynamicStats.leadSurgePct}%</span>.{' '}
-            <span className={styles.headlineSecondLine}>
-              Cost per lead down <span className={styles.metricDrop}>-{dynamicStats.cplReductionPct}%</span>.
-            </span>
+            {profileData.headline}
           </h1>
 
           <p className={`${styles.subheadline} animate-fade-up delay-3`}>
-            Abdul Malik Hussain. 5+ years engineering high-yield Google, Meta, and Microsoft
-            ad campaigns. Specializing in high-intent customer acquisition that scales lead volume
-            while aggressively lowering unit CAC.
+            {profileData.subheadline}
           </p>
 
           {/* Quick Info Badges */}
           <div className={`${styles.metaPillsRow} animate-fade-up delay-4`}>
             <div className={styles.metaPill}>
               <LocationPinIcon size={13} className={styles.metaIcon} />
-              <span>Chennai, India (IST / Open to Remote)</span>
+              <span>{profileData.location} (Open to Remote)</span>
             </div>
             <div className={`${styles.metaPill} ${styles.metaPillActive}`}>
               <span className={styles.metaPulseDot} />
-              <span>Open to Senior & Lead Roles</span>
+              <span>{profileData.availability}</span>
             </div>
           </div>
 
@@ -153,14 +149,14 @@ export default function Hero() {
             </a>
             <a
               id="btn-lets-talk"
-              href="#contact"
+              href={profileData.contact?.calendarLink || '#contact'}
               className={`btn btn--secondary ${styles.actionBtn}`}
             >
               <span>Book 15-Min Intro</span>
             </a>
             <a
               id="btn-download-resume"
-              href="/Abdul-Malik-Hussain-Performance-Marketing.pdf"
+              href={profileData.contact?.resumeUrl || '/Abdul-Malik-Hussain-Performance-Marketing.pdf'}
               download
               className={`btn btn--ghost ${styles.actionBtn}`}
             >

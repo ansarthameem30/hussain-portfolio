@@ -1,9 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { checksConfig } from '@/config/content/checks.config';
+import workflowData from '@/data/content/workflow.json';
+import profileData from '@/data/content/profile.json';
 import { siteConfig } from '@/config/site.config';
 import styles from './ChecksAndCall.module.css';
+
+const checksConfig = {
+  heading: 'Account Health & Direct Booking',
+  subheading:
+    "When I take over or audit an ad account, I don't guess. Here are the three non-negotiables I inspect on day one, followed by verified recommendations and direct booking.",
+  threeChecks: workflowData.threeChecks,
+  recommendations: workflowData.recommendations,
+  bookCall: {
+    ...workflowData.bookCall,
+    calendarUrl: profileData.contact.calendarLink || '#contact',
+  },
+  sampleReport: {
+    title: 'Sample Campaign Review',
+    subtitle: 'See exactly how I report to leadership & clients',
+    description:
+      'A sanitized one-page weekly performance review deck. Keyword wins, budget pacing, CPL variance, and actionable next steps — exactly how high-spending accounts are run.',
+    buttonLabel: 'See how I report (PDF)',
+    downloadUrl: '#lead-calculator',
+  },
+};
 import {
   ClockIcon,
   LocationPinIcon,
