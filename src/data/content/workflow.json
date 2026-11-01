@@ -1,0 +1,76 @@
+{
+  "processSteps": [
+    {
+      "id": "step-audit",
+      "number": "01",
+      "title": "Audit",
+      "description": "I start with the data: what is converting, what is wasting spend, and what has changed.",
+      "icon": "🔍"
+    },
+    {
+      "id": "step-prioritise",
+      "number": "02",
+      "title": "Prioritise",
+      "description": "I fix the leaks first, then put budget behind what works.",
+      "icon": "🎯"
+    },
+    {
+      "id": "step-test",
+      "number": "03",
+      "title": "Test",
+      "description": "Ad copy, audiences and bids get tested one change at a time, and the winners stay.",
+      "icon": "⚗️"
+    },
+    {
+      "id": "step-report",
+      "number": "04",
+      "title": "Report",
+      "description": "I explain results in plain language, with clear recommendations the client can act on.",
+      "icon": "📊"
+    }
+  ],
+  "threeChecks": {
+    "title": "Three things I check first in any account",
+    "description": "Before touching bids or budget, these three leaks usually cost 20–40% of ad spend.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Search terms that waste spend",
+        "detail": "Broad match keywords and loose phrase matching trigger irrelevant, low-intent queries. I scour the search terms report and build rigorous negative keyword lists to stop wasted burn immediately.",
+        "badge": "Wasted Budget Leak"
+      },
+      {
+        "number": "02",
+        "title": "Conversion tracking that isn't firing properly",
+        "detail": "Double-counting page views as leads, unverified purchase tags, or broken CRM webhooks ruin smart bidding models. I verify pixel firing, offline conversion sync, and deduplication before scaling.",
+        "badge": "Data Integrity"
+      },
+      {
+        "number": "03",
+        "title": "Budget spread across weak campaigns",
+        "detail": "Spreading ₹1,00,000 across 12 campaigns dilutes algorithm learning. I concentrate 80% of budget into proven, high-converting campaigns while keeping 20% strictly isolated for disciplined A/B testing.",
+        "badge": "Capital Efficiency"
+      }
+    ]
+  },
+  "recommendations": {
+    "title": "Recommendations & Endorsements",
+    "hasQuotes": false,
+    "placeholderMessage": "Client and team lead recommendations are only published with explicit written authorization. Verified quotes from account directors will be updated here.",
+    "quote": null,
+    "note": "Strict policy: No fabricated testimonials. Real work speaks for itself."
+  },
+  "bookCall": {
+    "title": "Book a 15-Minute Paid Media Diagnostic",
+    "description": "Have an existing account burning cash, or looking to scale lead generation? Pick a time on my calendar for a quick, no-pitch review of your current performance metrics.",
+    "calendarUrl": "https://calendly.com",
+    "duration": "15 mins",
+    "format": "Google Meet / Phone Call",
+    "perks": [
+      "Quick audit of your current CPL vs benchmark",
+      "Immediate feedback on keyword match type wastes",
+      "Direct answers on Google / Meta / Microsoft Ads strategy"
+    ],
+    "buttonLabel": "Schedule 15-min call →"
+  }
+}
