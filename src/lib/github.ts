@@ -134,14 +134,23 @@ export class GitHubService {
     }
 
     // Local disk update fallback
-    const localPath = path.join(process.cwd(), 'src', 'data', 'content', fileName);
-    await fs.writeFile(localPath, formattedContent, 'utf-8');
+    try {
+      const localPath = path.join(process.cwd(), 'src', 'data', 'content', fileName);
+      await fs.writeFile(localPath, formattedContent, 'utf-8');
 
-    return {
-      success: true,
-      destination: 'local',
-      message: 'Saved to local workspace JSON (GITHUB_TOKEN not provided).',
-    };
+      return {
+        success: true,
+        destination: 'local',
+        message: 'Saved to local workspace JSON (GITHUB_TOKEN not provided).',
+      };
+    } catch (fsErr: any) {
+      if (fsErr.code === 'EROFS' || fsErr.message?.includes('read-only')) {
+        throw new Error(
+          'Vercel Serverless environment has a read-only filesystem (EROFS). Please configure GITHUB_TOKEN in your Vercel Project Settings > Environment Variables so changes can be committed to your repository.'
+        );
+      }
+      throw fsErr;
+    }
   }
 }
 

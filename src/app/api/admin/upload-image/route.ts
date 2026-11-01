@@ -34,11 +34,17 @@ export async function POST(request: Request) {
     const buffer = Buffer.from(arrayBuffer);
     const fileName = 'headshot.jpg';
 
-    // 1. Save locally to public directory
-    const publicPath = path.join(process.cwd(), 'public', fileName);
-    await fs.writeFile(publicPath, buffer);
+    let localSaved = false;
+    // 1. Try to save locally (succeeds in local workspace; fails gracefully on Vercel read-only filesystem)
+    try {
+      const publicPath = path.join(process.cwd(), 'public', fileName);
+      await fs.writeFile(publicPath, buffer);
+      localSaved = true;
+    } catch (fsErr: any) {
+      console.warn('Local public/ write skipped (read-only filesystem):', fsErr.message);
+    }
 
-    // 2. If GitHub token is configured, push the image to GitHub public/ folder
+    // 2. If GitHub token is configured, push the image directly to GitHub public/ folder
     let githubPushed = false;
     const token = process.env.GITHUB_TOKEN;
     const owner = process.env.GITHUB_OWNER || 'ansarthameem30';
@@ -46,82 +52,104 @@ export async function POST(request: Request) {
     const branch = process.env.GITHUB_BRANCH || 'main';
 
     if (token) {
-      try {
-        const gitHubPath = `public/${fileName}`;
-        const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${gitHubPath}?ref=${branch}`;
-        const getRes = await fetch(getUrl, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: 'application/vnd.github.v3+json',
-            'User-Agent': 'Hussain-Portfolio-Admin',
-          },
-          cache: 'no-store',
-        });
+      const gitHubPath = `public/${fileName}`;
+      const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${gitHubPath}?ref=${branch}`;
+      const getRes = await fetch(getUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'User-Agent': 'Hussain-Portfolio-Admin',
+        },
+        cache: 'no-store',
+      });
 
-        let currentSha: string | undefined;
-        if (getRes.ok) {
-          const data = await getRes.json();
-          currentSha = data.sha;
-        }
-
-        const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${gitHubPath}`;
-        const payload: Record<string, any> = {
-          message: `Update About portrait image (${file.name}) via Portfolio Studio`,
-          content: buffer.toString('base64'),
-          branch,
-        };
-
-        if (currentSha) {
-          payload.sha = currentSha;
-        }
-
-        const putRes = await fetch(putUrl, {
-          method: 'PUT',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json',
-            'User-Agent': 'Hussain-Portfolio-Admin',
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (putRes.ok) {
-          githubPushed = true;
-        }
-      } catch (err) {
-        console.warn('Failed to push image to GitHub API, local save succeeded:', err);
+      let currentSha: string | undefined;
+      if (getRes.ok) {
+        const data = await getRes.json();
+        currentSha = data.sha;
       }
+
+      const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${gitHubPath}`;
+      const payload: Record<string, any> = {
+        message: `Update About portrait image (${file.name}) via Portfolio Studio`,
+        content: buffer.toString('base64'),
+        branch,
+      };
+
+      if (currentSha) {
+        payload.sha = currentSha;
+      }
+
+      const putRes = await fetch(putUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+          'User-Agent': 'Hussain-Portfolio-Admin',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!putRes.ok) {
+        const errJson = await putRes.json().catch(() => ({}));
+        throw new Error(errJson.message || `GitHub API error (${putRes.status}): Failed to commit image`);
+      }
+
+      githubPushed = true;
+    } else if (!localSaved) {
+      // Running in read-only Vercel environment with no GITHUB_TOKEN configured
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            'Vercel Serverless environment has a read-only filesystem (EROFS). Please add GITHUB_TOKEN to your Vercel Project Settings (Settings > Environment Variables) with a GitHub Personal Access Token (repo scope) so uploads can be committed to your repository.',
+        },
+        { status: 400 }
+      );
     }
 
     // 3. Update profile.json with cache-busting timestamp
     const timestamp = Date.now();
     const newHeadshotUrl = `/${fileName}?v=${timestamp}`;
-    const profilePath = path.join(process.cwd(), 'src', 'data', 'content', 'profile.json');
-    const rawProfile = await fs.readFile(profilePath, 'utf-8');
-    const profileJson = JSON.parse(rawProfile);
+
+    // Get current profile content safely
+    let profileJson: any;
+    try {
+      const profileResult = await githubService.getFileContent('profile.json');
+      profileJson = profileResult.data;
+    } catch {
+      const profilePath = path.join(process.cwd(), 'src', 'data', 'content', 'profile.json');
+      const rawProfile = await fs.readFile(profilePath, 'utf-8');
+      profileJson = JSON.parse(rawProfile);
+    }
+
     profileJson.headshot = newHeadshotUrl;
 
-    await fs.writeFile(profilePath, JSON.stringify(profileJson, null, 2) + '\n', 'utf-8');
-
-    // Also commit profile.json to GitHub if configured
-    if (token) {
+    // Save profile.json locally if writable
+    if (localSaved) {
       try {
-        await githubService.saveFileContent(
-          'profile.json',
-          profileJson,
-          `Update headshot image URL in profile.json via Portfolio Studio`
-        );
-      } catch (err) {
-        console.warn('Failed to commit profile.json to GitHub API:', err);
+        const profilePath = path.join(process.cwd(), 'src', 'data', 'content', 'profile.json');
+        await fs.writeFile(profilePath, JSON.stringify(profileJson, null, 2) + '\n', 'utf-8');
+      } catch (e: any) {
+        console.warn('Local profile.json write skipped:', e.message);
       }
+    }
+
+    // Commit profile.json to GitHub if token configured
+    if (token) {
+      await githubService.saveFileContent(
+        'profile.json',
+        profileJson,
+        `Update headshot image URL in profile.json via Portfolio Studio`
+      );
     }
 
     return NextResponse.json({
       success: true,
       url: newHeadshotUrl,
       message: githubPushed
-        ? 'Portrait photo updated locally and committed to GitHub (triggers production build)!'
+        ? 'Portrait photo committed to GitHub! Vercel is now deploying your updated photo.'
         : 'Portrait photo updated in workspace successfully!',
     });
   } catch (error: any) {
