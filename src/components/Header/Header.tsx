@@ -89,11 +89,10 @@ export default function Header() {
               className={styles.themeStudioBtn}
               onClick={openThemeStudio}
               aria-label="Open Theme Studio"
-              title={`Explore ${availableThemes.length} Curated Executive Profiles`}
+              title={`Current Theme: ${theme.label}. Click to customize.`}
             >
               <PaletteIcon />
-              <span className={styles.themeStudioLabel}>{theme.label}</span>
-              <span className={styles.themeStudioCount}>{availableThemes.length}</span>
+              <span className={styles.themeStudioLabel}>Theme</span>
             </button>
 
             {/* WhatsApp (Always visible) */}
