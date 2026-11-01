@@ -110,9 +110,13 @@ export default function Hero() {
         <div className={styles.content}>
           <div className="animate-fade-up delay-1">
             <div className={styles.liveTelemetryBadge}>
-              <span className={styles.livePulseDot} />
-              <span className={styles.liveBadgeText}>
-                {profileData.role} · $4M–$5M Monthly Spend Oversight
+              <span className={styles.livePulseDot} aria-hidden="true" />
+              <span className={styles.liveRoleTag}>Senior Campaign Manager</span>
+              <span className={styles.liveSepTag} aria-hidden="true">·</span>
+              <span className={styles.liveSpecialtyTag}>Paid Media & SEM</span>
+              <span className={styles.liveSpendChip}>
+                <span className={styles.spendFullText}>$4M–$5M Monthly Spend</span>
+                <span className={styles.spendShortText}>$4M–$5M Spend</span>
               </span>
             </div>
           </div>

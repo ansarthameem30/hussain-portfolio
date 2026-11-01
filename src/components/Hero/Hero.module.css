@@ -71,35 +71,91 @@
   min-width: 0;
 }
 
-/* Live Telemetry Pill */
+/* Executive Hero Live Badge */
 .liveTelemetryBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   background: var(--surface-overlay);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  padding: 0.35rem 0.85rem;
-  margin-bottom: 1.15rem;
+  padding: 0.3rem 0.4rem 0.3rem 0.75rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.liveTelemetryBadge:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .livePulseDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--status-active);
-  box-shadow: 0 0 8px var(--status-active);
+  background: var(--status-active, #10b981);
+  box-shadow: 0 0 8px var(--status-active, #10b981);
+  animation: pulseDot 2s infinite ease-in-out;
   flex-shrink: 0;
 }
 
-.liveBadgeText {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--status-active);
-  font-family: var(--font-mono);
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.liveRoleTag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.liveSepTag {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.liveSpecialtyTag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.liveSpendChip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
   letter-spacing: 0.02em;
-  line-height: 1.35;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.spendFullText {
+  display: inline;
+}
+
+.spendShortText {
+  display: none;
 }
 
 /* Headline with zero-bleach dynamic metrics */
@@ -644,16 +700,32 @@
   }
 
   .liveTelemetryBadge {
+    padding: 0.25rem 0.35rem 0.25rem 0.65rem;
+    gap: 0.4rem;
     margin-bottom: 0.85rem;
-    max-width: fit-content;
+    max-width: 100%;
   }
 
-  .liveBadgeText {
-    font-size: 0.7rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100vw - 5rem);
+  .liveSepTag,
+  .liveSpecialtyTag {
+    display: none; /* Keep badge ultra clean & single-line on mobile */
+  }
+
+  .liveRoleTag {
+    font-size: 0.75rem;
+  }
+
+  .liveSpendChip {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .spendFullText {
+    display: none;
+  }
+
+  .spendShortText {
+    display: inline;
   }
 
   /* Meta pills — stay inline, wrap naturally */

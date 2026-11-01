@@ -26,8 +26,8 @@ export default function About() {
           <div className={styles.photoCard}>
             <div className={styles.photoWrap}>
               <Image
-                src={siteConfig.headshot}
-                alt={`${siteConfig.name} – Senior Performance Marketer`}
+                src={profileData.headshot || siteConfig.headshot || '/headshot.jpg'}
+                alt={`${profileData.name || siteConfig.name} – Senior Campaign Manager`}
                 width={400}
                 height={460}
                 className={styles.photo}

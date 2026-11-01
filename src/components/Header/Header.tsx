@@ -54,17 +54,19 @@ export default function Header() {
         <div className={`container ${styles.inner}`}>
           {/* Logo */}
           <Link href="#hero" className={styles.logo} onClick={handleNavClick}>
-            <span className={styles.logoName}>{profileData.shortTitle || siteConfig.shortTitle}</span>
-            <span className={styles.logoRole}>{profileData.role || siteConfig.role}</span>
+            <span className={styles.logoName}>{profileData.shortTitle || 'Abdul Malik'}</span>
+            <span className={styles.logoRole}>Sr. Campaign Manager</span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className={styles.nav} aria-label="Main navigation">
-            {(profileData.navLinks || siteConfig.navLinks).map((link) => (
-              <a key={link.href} href={link.href} className={styles.navLink}>
-                {link.label}
-              </a>
-            ))}
+            {(profileData.navLinks || siteConfig.navLinks)
+              .filter((l) => l.href !== '#hero' && l.href !== '#about')
+              .map((link) => (
+                <a key={link.href} href={link.href} className={styles.navLink}>
+                  {link.label}
+                </a>
+              ))}
           </nav>
 
           {/* Action Controls */}

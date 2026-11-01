@@ -24,6 +24,7 @@ import {
   SparklesIcon,
   UploadIcon,
   FileTextIcon,
+  ImageIcon,
 } from '@/components/Icons/AdminIcons';
 
 type ContentType =
@@ -103,6 +104,37 @@ export default function AdminDashboardPage() {
       setResumeUploadMsg({ type: 'error', text: 'Network error uploading resume.' });
     } finally {
       setIsUploadingResume(false);
+    }
+  };
+
+  // Image / Headshot upload state
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [imageUploadMsg, setImageUploadMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const handleImageUpload = async () => {
+    if (!imageFile) return;
+    setIsUploadingImage(true);
+    setImageUploadMsg(null);
+    try {
+      const formData = new FormData();
+      formData.append('image', imageFile);
+      const res = await fetch('/api/admin/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setImageUploadMsg({ type: 'success', text: data.message });
+        setImageFile(null);
+        loadSection('profile');
+      } else {
+        setImageUploadMsg({ type: 'error', text: data.error || 'Failed to upload photo.' });
+      }
+    } catch {
+      setImageUploadMsg({ type: 'error', text: 'Network error uploading photo.' });
+    } finally {
+      setIsUploadingImage(false);
     }
   };
 
@@ -677,6 +709,102 @@ export default function AdminDashboardPage() {
                           <span>{resumeUploadMsg.text}</span>
                         </div>
                       )}
+                    </div>
+                  </div>
+
+                  {/* About Me Portrait / Headshot Management Card */}
+                  <div className={styles.cardSection}>
+                    <div className={styles.cardHeader}>
+                      <h3 className={styles.cardHeading}>
+                        <ImageIcon size={16} />
+                        <span>About Me Portrait Photo</span>
+                      </h3>
+                      <span className={styles.cardBadge}>Upload & Instant Replace</span>
+                    </div>
+
+                    <div className={styles.portraitManagerCard}>
+                      <div className={styles.portraitPreviewCol}>
+                        <div className={styles.portraitPreviewFrame}>
+                          <img
+                            src={contentData.headshot || '/headshot.jpg'}
+                            alt="Current portrait"
+                            className={styles.portraitImg}
+                          />
+                        </div>
+                        <a
+                          href={contentData.headshot || '/headshot.jpg'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.fileChooseBtn}
+                          style={{ textDecoration: 'none', fontSize: '0.75rem', height: '30px' }}
+                        >
+                          <span>Full Size</span>
+                          <ExternalLinkIcon size={12} />
+                        </a>
+                      </div>
+
+                      <div className={styles.portraitControlsCol}>
+                        <div className={styles.resumeStatus}>
+                          <CheckCircleIcon size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                          <span>Active File: <strong>{contentData.headshot || '/headshot.jpg'}</strong></span>
+                        </div>
+
+                        <div className={styles.resumeFilePicker}>
+                          <label className={styles.fileChooseBtn}>
+                            <UploadIcon size={15} />
+                            <span>{imageFile ? imageFile.name : 'Select New Photo from Device'}</span>
+                            <input
+                              type="file"
+                              accept="image/png,image/jpeg,image/jpg,image/webp"
+                              className={styles.fileInputHidden}
+                              onChange={(e) => {
+                                if (e.target.files && e.target.files[0]) {
+                                  setImageFile(e.target.files[0]);
+                                  setImageUploadMsg(null);
+                                }
+                              }}
+                            />
+                          </label>
+
+                          {imageFile && (
+                            <button
+                              type="button"
+                              onClick={handleImageUpload}
+                              disabled={isUploadingImage}
+                              className={styles.fileUploadSubmitBtn}
+                            >
+                              <SaveIcon size={14} />
+                              <span>{isUploadingImage ? 'Uploading & Replacing...' : 'Upload & Replace Photo'}</span>
+                            </button>
+                          )}
+                        </div>
+
+                        {imageUploadMsg && (
+                          <div
+                            style={{
+                              fontSize: '0.825rem',
+                              color: imageUploadMsg.type === 'success' ? '#34d399' : '#f87171',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.4rem',
+                            }}
+                          >
+                            {imageUploadMsg.type === 'success' ? <CheckCircleIcon size={15} /> : <AlertCircleIcon size={15} />}
+                            <span>{imageUploadMsg.text}</span>
+                          </div>
+                        )}
+
+                        <div className={styles.fieldGroup} style={{ marginBottom: 0 }}>
+                          <label className={styles.fieldLabel}>Or Direct Image URL / CDN Link</label>
+                          <input
+                            type="text"
+                            value={contentData.headshot || ''}
+                            onChange={(e) => setContentData({ ...contentData, headshot: e.target.value })}
+                            className={styles.fieldInput}
+                            placeholder="/headshot.jpg"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>
