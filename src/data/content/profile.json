@@ -42,7 +42,7 @@
   "headline": "Leads up 141%. Cost per lead down 56%.",
   "subheadline": "Senior Campaign Manager managing $4–5M+ monthly ad spend across Google Ads, Microsoft Ads, Meta, and YouTube. Cutting cost-per-lead up to 90% while scaling qualified pipeline.",
   "smallLine": "Based in Chennai, Tamil Nadu, India. Open to performance marketing roles.",
-  "headshot": "/headshot.jpg",
+  "headshot": "/headshot.jpg?v=1793543147530",
   "contact": {
     "email": "malikhussain3013@gmail.com",
     "phone": "+91-7395879451",
@@ -57,15 +57,42 @@
     "Tamil"
   ],
   "navLinks": [
-    { "label": "Home", "href": "#hero" },
-    { "label": "Results", "href": "#results" },
-    { "label": "About", "href": "#about" },
-    { "label": "Expertise", "href": "#expertise" },
-    { "label": "Timeline", "href": "#experience" },
-    { "label": "Certifications", "href": "#certifications" },
-    { "label": "Creative", "href": "#creative" },
-    { "label": "How I Work", "href": "#how-i-work" },
-    { "label": "Contact", "href": "#contact" }
+    {
+      "label": "Home",
+      "href": "#hero"
+    },
+    {
+      "label": "Results",
+      "href": "#results"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Expertise",
+      "href": "#expertise"
+    },
+    {
+      "label": "Timeline",
+      "href": "#experience"
+    },
+    {
+      "label": "Certifications",
+      "href": "#certifications"
+    },
+    {
+      "label": "Creative",
+      "href": "#creative"
+    },
+    {
+      "label": "How I Work",
+      "href": "#how-i-work"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
   ],
   "footer": {
     "copyright": "© 2026 Abdul Malik Hussain. Chennai, Tamil Nadu, India.",
