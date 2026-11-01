@@ -23,6 +23,7 @@ export default function Header() {
     theme,
     toggleLightDark,
     openThemeStudio,
+    availableThemes,
   } = useTheme();
 
   useEffect(() => {
@@ -74,12 +75,12 @@ export default function Header() {
             {/* Quick Light/Dark Toggle */}
             <button
               id="btn-quick-theme-toggle"
-              className={`${styles.themeQuickBtn} ${themeId === 'light' ? styles.themeBtnLight : ''}`}
+              className={`${styles.themeQuickBtn} ${theme.isLight ? styles.themeBtnLight : ''}`}
               onClick={toggleLightDark}
               aria-label="Toggle light or dark mode"
-              title={themeId === 'light' ? 'Switch to Dark Mode (Emerald Obsidian)' : 'Switch to Executive Light Mode'}
+              title={theme.isLight ? 'Switch to Royal Amethyst Dark Mode' : 'Switch to Daylight Light Mode'}
             >
-              {themeId === 'light' ? <MoonIcon size={17} /> : <SunIcon size={17} />}
+              {theme.isLight ? <MoonIcon size={17} /> : <SunIcon size={17} />}
             </button>
 
             {/* Theme Studio Button (Launches Studio Modal) */}
@@ -88,11 +89,11 @@ export default function Header() {
               className={styles.themeStudioBtn}
               onClick={openThemeStudio}
               aria-label="Open Theme Studio"
-              title="Explore 3 Curated Executive Profiles"
+              title={`Explore ${availableThemes.length} Curated Executive Profiles`}
             >
               <PaletteIcon />
               <span className={styles.themeStudioLabel}>{theme.label}</span>
-              <span className={styles.themeStudioCount}>3</span>
+              <span className={styles.themeStudioCount}>{availableThemes.length}</span>
             </button>
 
             {/* WhatsApp (Always visible) */}
@@ -185,7 +186,7 @@ export default function Header() {
                 >
                   <PaletteIcon />
                   <div className={styles.mobileThemeStudioText}>
-                    <strong>Explore 3 Executive Profiles</strong>
+                    <strong>Explore {availableThemes.length} Executive Profiles</strong>
                     <small>Active: {theme.label} ({theme.vibe})</small>
                   </div>
                   <span className={styles.navArrow}>→</span>

@@ -38,10 +38,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleLightDark = () => {
-    if (themeId === 'light') {
-      setTheme('deep-green');
+    const currentTheme = themes[themeId] || themes[defaultTheme];
+    if (currentTheme.isLight) {
+      setTheme('purple-dark');
     } else {
-      setTheme('light');
+      setTheme('purple-light');
     }
   };
 

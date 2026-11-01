@@ -8,6 +8,7 @@ import styles from './ThemeStudio.module.css';
 export default function ThemeStudio() {
   const {
     themeId,
+    theme,
     setTheme,
     toggleLightDark,
     availableThemes,
@@ -57,7 +58,7 @@ export default function ThemeStudio() {
           <div>
             <div className={styles.headerTitleGroup}>
               <h2 className={styles.title}>Theme Studio</h2>
-              <span className={styles.countBadge}>3 Curated Profiles</span>
+              <span className={styles.countBadge}>{availableThemes.length} Curated Profiles</span>
             </div>
             <p className={styles.subtitle}>
               Bespoke color grading profiles engineered for executive clarity
@@ -78,19 +79,19 @@ export default function ThemeStudio() {
             className={`${styles.tabBtn} ${filter === 'all' ? styles.tabBtnActive : ''}`}
             onClick={() => setFilter('all')}
           >
-            All Themes (3)
+            All Themes ({availableThemes.length})
           </button>
           <button
             className={`${styles.tabBtn} ${filter === 'dark' ? styles.tabBtnActive : ''}`}
             onClick={() => setFilter('dark')}
           >
-            Executive Dark (2)
+            Executive Dark ({availableThemes.filter((t) => !t.isLight).length})
           </button>
           <button
             className={`${styles.tabBtn} ${filter === 'light' ? styles.tabBtnActive : ''}`}
             onClick={() => setFilter('light')}
           >
-            Crisp Daylight (1)
+            Crisp Daylight ({availableThemes.filter((t) => t.isLight).length})
           </button>
         </div>
 
@@ -200,15 +201,15 @@ export default function ThemeStudio() {
             className={styles.toggleQuickBtn}
             onClick={toggleLightDark}
           >
-            {themeId === 'light' ? (
+            {theme.isLight ? (
               <>
                 <MoonIcon size={14} />
-                <span>Toggle to Obsidian Dark</span>
+                <span>Toggle to Royal Amethyst</span>
               </>
             ) : (
               <>
                 <SunIcon size={14} />
-                <span>Toggle to Executive Light</span>
+                <span>Toggle to Daylight Crisp</span>
               </>
             )}
           </button>
