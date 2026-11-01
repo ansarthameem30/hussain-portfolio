@@ -1,7 +1,7 @@
 /* ============================================================
    Executive CMS Admin Dashboard Styles
    Matches Luxury Dark Theme: #06100c / Amber #ffd23f
-   Full Mobile & Desktop Precision Alignment
+   Flawless Mobile Native-App Experience & Desktop Studio
    ============================================================ */
 
 .adminRoot {
@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* ── Login View ────────────────────────────────────────────── */
@@ -20,55 +21,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: radial-gradient(circle at 50% 15%, rgba(255, 210, 63, 0.08) 0%, #06100c 70%);
 }
 
 .loginCard {
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   background: #0f221a;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  padding: 2.5rem 2rem;
+  padding: 2.25rem 1.75rem;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
 }
 
 .loginIconCircle {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   background: rgba(255, 210, 63, 0.12);
   color: #ffd23f;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem auto;
+  margin: 0 auto 1.25rem auto;
   border: 1px solid rgba(255, 210, 63, 0.25);
 }
 
 .loginTitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #f8fafc;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   letter-spacing: -0.025em;
 }
 
 .loginSubtitle {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: #94a3b8;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
   line-height: 1.5;
 }
 
 .loginInputWrap {
-  position: relative;
   margin-bottom: 1.25rem;
 }
 
@@ -80,7 +79,7 @@
   border-radius: 10px;
   padding: 0 1rem;
   color: #f8fafc;
-  font-size: 0.95rem;
+  font-size: 16px; /* Prevents auto-zoom on iOS Safari */
   outline: none;
   transition: all 0.2s ease;
 }
@@ -109,15 +108,10 @@
 
 .loginSubmitBtn:hover {
   background: #ffe066;
-  transform: translateY(-1px);
-}
-
-.loginSubmitBtn:active {
-  transform: translateY(0);
 }
 
 .loginFooter {
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
   text-align: center;
   font-size: 0.75rem;
   color: #64748b;
@@ -125,66 +119,58 @@
 
 /* ── Top Header Bar ────────────────────────────────────────── */
 .topNav {
-  height: 64px;
-  background: rgba(10, 23, 18, 0.92);
+  height: 58px;
+  background: rgba(10, 23, 18, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 50;
   backdrop-filter: blur(12px);
 }
 
 .navBrand {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.65rem;
 }
 
 .brandPill {
   background: #ffd23f;
   color: #06100c;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.25rem 0.55rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 6px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .brandName {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #f8fafc;
   letter-spacing: -0.015em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-@media (max-width: 640px) {
-  .brandName span {
-    display: none;
-  }
+  white-space: nowrap;
 }
 
 .navActions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .connectionBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.8rem;
+  gap: 0.35rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  padding: 0.35rem 0.75rem;
-  border-radius: 20px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 16px;
   background: rgba(16, 185, 129, 0.12);
   border: 1px solid rgba(16, 185, 129, 0.25);
   color: #34d399;
@@ -195,37 +181,46 @@
   height: 6px;
   border-radius: 50%;
   background: #34d399;
-  box-shadow: 0 0 8px #34d399;
+  box-shadow: 0 0 6px #34d399;
 }
 
-.siteLink {
+@media (max-width: 640px) {
+  .connectionBadge span {
+    display: none;
+  }
+}
+
+.iconBtn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  height: 34px;
+  padding: 0 0.65rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: #94a3b8;
-  font-size: 0.85rem;
-  padding: 0.4rem 0.75rem;
-  border-radius: 8px;
+  cursor: pointer;
   transition: all 0.15s ease;
   text-decoration: none;
 }
 
-.siteLink:hover {
+.iconBtn:hover {
   color: #ffd23f;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .logoutBtn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #94a3b8;
-  height: 36px;
-  padding: 0 0.85rem;
+  height: 34px;
+  width: 34px;
   border-radius: 8px;
-  font-size: 0.85rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -236,87 +231,105 @@
   color: #fca5a5;
 }
 
-.mobileMenuBtn {
+/* ── Mobile Horizontal Scrollable Segmented Tab Strip ──────── */
+.mobileTabsStrip {
   display: none;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  gap: 0.4rem;
+  padding: 0.6rem 0.85rem;
+  background: #0a1712;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 58px;
+  z-index: 40;
+}
+
+.mobileTabsStrip::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 960px) {
-  .mobileMenuBtn {
-    display: inline-flex;
+  .mobileTabsStrip {
+    display: flex;
   }
+}
+
+.mobileTabItem {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.mobileTabItemActive {
+  background: rgba(255, 210, 63, 0.14);
+  color: #ffd23f;
+  border-color: rgba(255, 210, 63, 0.35);
+  font-weight: 600;
 }
 
 /* ── Main Dashboard Layout ─────────────────────────────────── */
 .dashboardBody {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 240px 1fr;
   flex: 1;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 58px);
 }
 
 @media (max-width: 960px) {
   .dashboardBody {
     grid-template-columns: 1fr;
+    padding-bottom: 80px; /* Space for mobile sticky action bar */
   }
 }
 
-/* ── Sidebar Navigation ────────────────────────────────────── */
+/* ── Desktop Sidebar ───────────────────────────────────────── */
 .sidebar {
   background: #0a1712;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 1.5rem 0.85rem;
+  padding: 1.25rem 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 @media (max-width: 960px) {
   .sidebar {
     display: none;
   }
-  .sidebarOpen {
-    display: flex;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 50;
-    background: #0a1712;
-    overflow-y: auto;
-    padding: 1.25rem;
-  }
 }
 
 .sidebarGroupLabel {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #64748b;
-  padding: 0.5rem 0.85rem 0.35rem 0.85rem;
+  padding: 0.5rem 0.75rem 0.35rem 0.75rem;
 }
 
 .navButton {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   width: 100%;
-  padding: 0.7rem 0.85rem;
+  padding: 0.65rem 0.75rem;
   border-radius: 8px;
   border: 1px solid transparent;
   background: transparent;
   color: #94a3b8;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   text-align: left;
@@ -335,34 +348,27 @@
   font-weight: 600;
 }
 
-.navButtonIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: currentColor;
-}
-
 .sidebarFooter {
   margin-top: auto;
-  padding: 1.25rem 0.85rem 0.5rem 0.85rem;
+  padding: 1rem 0.75rem 0.5rem 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.75rem;
+  font-size: 0.725rem;
   color: #64748b;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* ── Content Viewport ──────────────────────────────────────── */
 .mainViewport {
-  padding: 2rem 2.5rem;
+  padding: 1.75rem 2.25rem;
   background: #06100c;
   overflow-y: auto;
-  max-width: 1100px;
+  max-width: 1080px;
   width: 100%;
 }
 
 @media (max-width: 768px) {
   .mainViewport {
-    padding: 1.25rem 1rem;
+    padding: 1rem 0.85rem;
   }
 }
 
@@ -371,30 +377,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
-  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .titleArea {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .viewTitle {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #f8fafc;
   letter-spacing: -0.025em;
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .viewSubtitle {
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   color: #94a3b8;
   margin: 0;
 }
@@ -402,11 +408,18 @@
 .actionRow {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
 }
 
-/* Segmented mode switcher (Form vs JSON) */
+@media (max-width: 768px) {
+  /* On mobile, keep header title clean, actions go into mobile bar */
+  .actionRow {
+    display: none;
+  }
+}
+
+/* Segmented mode switcher */
 .modeSegmented {
   display: inline-flex;
   background: #0a1712;
@@ -418,11 +431,11 @@
 .segmentBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.85rem;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 6px;
   border: none;
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #94a3b8;
   background: transparent;
@@ -435,34 +448,71 @@
   color: #ffd23f;
   font-weight: 600;
   border: 1px solid rgba(255, 210, 63, 0.2);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .publishPrimaryBtn {
-  height: 38px;
+  height: 36px;
+  background: #ffd23f;
+  color: #06100c;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.15s ease;
+}
+
+.publishPrimaryBtn:hover {
+  background: #ffe066;
+}
+
+.publishPrimaryBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Mobile Sticky Bottom Action Bar ───────────────────────── */
+.mobileStickyBar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(10, 23, 18, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 1rem;
+  z-index: 50;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 960px) {
+  .mobileStickyBar {
+    display: flex;
+  }
+}
+
+.mobilePublishBtn {
+  flex: 1;
+  height: 42px;
   background: #ffd23f;
   color: #06100c;
   font-weight: 600;
   font-size: 0.875rem;
   border: none;
   border-radius: 8px;
-  padding: 0 1.25rem;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.15s ease;
-}
-
-.publishPrimaryBtn:hover {
-  background: #ffe066;
-  box-shadow: 0 0 18px rgba(255, 210, 63, 0.35);
-}
-
-.publishPrimaryBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  box-shadow: none;
+  justify-content: center;
+  gap: 0.45rem;
+  cursor: pointer;
 }
 
 /* ── Feedback Banners ──────────────────────────────────────── */
@@ -470,28 +520,28 @@
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: #6ee7b7;
-  padding: 0.85rem 1.25rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-size: 0.825rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .bannerError {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #fca5a5;
-  padding: 0.85rem 1.25rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-size: 0.825rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .bannerCloseBtn {
@@ -507,15 +557,16 @@
 .cardSection {
   background: #0f221a;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 1.75rem;
-  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 640px) {
   .cardSection {
-    padding: 1.25rem;
+    padding: 1.1rem 0.9rem;
+    border-radius: 10px;
   }
 }
 
@@ -523,63 +574,64 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
 }
 
 .cardHeading {
-  font-size: 1.05rem;
+  font-size: 0.975rem;
   font-weight: 600;
   color: #f8fafc;
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .cardBadge {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #94a3b8;
   background: rgba(255, 255, 255, 0.05);
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
 }
 
 .gridTwoCol {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 @media (max-width: 768px) {
   .gridTwoCol {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 }
 
 .gridThreeCol {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 @media (max-width: 768px) {
   .gridThreeCol {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
 
 .fieldGroup {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .fieldLabel {
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   font-weight: 500;
   color: #94a3b8;
   letter-spacing: 0.01em;
@@ -592,8 +644,8 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   color: #f8fafc;
-  padding: 0.7rem 0.9rem;
-  font-size: 0.9rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 16px; /* 16px prevents iOS browser auto-zoom */
   font-family: inherit;
   outline: none;
   transition: all 0.15s ease;
@@ -607,47 +659,42 @@
 }
 
 .fieldTextarea {
-  min-height: 85px;
+  min-height: 80px;
   line-height: 1.5;
   resize: vertical;
 }
 
-/* ── Nested Item Cards (Case Studies, Steps, Timeline) ─────── */
+/* ── Item Card (Sub-blocks) ────────────────────────────────── */
 .itemCard {
-  background: rgba(6, 16, 12, 0.6);
+  background: rgba(6, 16, 12, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.15s ease;
-}
-
-.itemCard:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  padding: 1.1rem;
+  margin-bottom: 0.85rem;
 }
 
 .itemHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .itemTitle {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #ffd23f;
 }
 
 .itemTag {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #64748b;
   font-family: var(--font-mono, monospace);
 }
 
-/* ── Raw JSON Editor ───────────────────────────────────────── */
+/* ── Code Textarea ─────────────────────────────────────────── */
 .codeEditorWrapper {
   background: #06100c;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -658,7 +705,7 @@
 .codeEditorHeader {
   background: #0a1712;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.85rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -669,51 +716,47 @@
 
 .codeTextarea {
   width: 100%;
-  min-height: 480px;
+  min-height: 420px;
   background: #06100c;
   border: none;
   color: #38bdf8;
-  padding: 1rem;
+  padding: 0.85rem;
   font-family: var(--font-mono, 'JetBrains Mono', Consolas, monospace);
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
   outline: none;
   resize: vertical;
-}
-
-.codeTextarea:focus {
-  background: rgba(10, 23, 18, 0.4);
 }
 
 /* ── Modal Dialog ──────────────────────────────────────────── */
 .modalBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 
 .modalBox {
   background: #0f221a;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  border-radius: 14px;
   width: 100%;
-  max-width: 520px;
-  padding: 2rem;
+  max-width: 480px;
+  padding: 1.75rem 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
 }
 
 .modalTitle {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #f8fafc;
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -721,17 +764,17 @@
 
 .modalDesc {
   color: #94a3b8;
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   line-height: 1.5;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .modalActions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
 }
 
 .secondaryActionBtn {
@@ -739,13 +782,8 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #e2e8f0;
-  padding: 0 1.25rem;
+  padding: 0 1rem;
   border-radius: 8px;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.secondaryActionBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
 }

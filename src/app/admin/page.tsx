@@ -18,10 +18,9 @@ import {
   SaveIcon,
   CodeIcon,
   EditIcon,
-  MenuIcon,
-  CloseIcon,
   GitHubIcon,
   RefreshIcon,
+  CloseIcon,
 } from '@/components/Icons/AdminIcons';
 
 type ContentType = 'profile' | 'projects' | 'skills' | 'experience' | 'certifications' | 'stats' | 'workflow';
@@ -29,24 +28,24 @@ type ContentType = 'profile' | 'projects' | 'skills' | 'experience' | 'certifica
 interface SectionNavItem {
   id: ContentType;
   label: string;
+  shortLabel: string;
   icon: React.ReactNode;
 }
 
 const NAV_ITEMS: SectionNavItem[] = [
-  { id: 'profile', label: 'Profile & Identity', icon: <UserIcon size={18} /> },
-  { id: 'projects', label: 'Projects & Case Studies', icon: <BarChartIcon size={18} /> },
-  { id: 'stats', label: 'Numbers Strip', icon: <HashIcon size={18} /> },
-  { id: 'skills', label: 'Skills & Tools', icon: <ZapIcon size={18} /> },
-  { id: 'experience', label: 'Experience & Degrees', icon: <BriefcaseIcon size={18} /> },
-  { id: 'certifications', label: 'Certifications', icon: <AwardIcon size={18} /> },
-  { id: 'workflow', label: 'How I Work & Leaks', icon: <GitMergeIcon size={18} /> },
+  { id: 'profile', label: 'Profile & Identity', shortLabel: 'Profile', icon: <UserIcon size={16} /> },
+  { id: 'projects', label: 'Projects & Results', shortLabel: 'Projects', icon: <BarChartIcon size={16} /> },
+  { id: 'stats', label: 'Numbers Strip', shortLabel: 'Stats', icon: <HashIcon size={16} /> },
+  { id: 'skills', label: 'Skills & Tools', shortLabel: 'Skills', icon: <ZapIcon size={16} /> },
+  { id: 'experience', label: 'Experience & Timeline', shortLabel: 'Timeline', icon: <BriefcaseIcon size={16} /> },
+  { id: 'certifications', label: 'Certifications', shortLabel: 'Certs', icon: <AwardIcon size={16} /> },
+  { id: 'workflow', label: 'How I Work & Leaks', shortLabel: 'Workflow', icon: <GitMergeIcon size={16} /> },
 ];
 
 export default function AdminDashboardPage() {
   const [isAuthed, setIsAuthed] = useState<boolean | null>(null);
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Active section & loaded data
   const [activeSection, setActiveSection] = useState<ContentType>('profile');
@@ -64,7 +63,7 @@ export default function AdminDashboardPage() {
   const [showCommitModal, setShowCommitModal] = useState(false);
   const [commitMessage, setCommitMessage] = useState('');
 
-  // Check auth on initial load
+  // Check auth on load
   useEffect(() => {
     fetch('/api/admin/content?type=profile')
       .then((res) => {
@@ -88,7 +87,6 @@ export default function AdminDashboardPage() {
   // Fetch section content when section changes
   const loadSection = async (section: ContentType) => {
     setActiveSection(section);
-    setMobileMenuOpen(false);
     setIsLoading(true);
     setNotification(null);
     try {
@@ -157,7 +155,7 @@ export default function AdminDashboardPage() {
         body: JSON.stringify({
           type: activeSection,
           data: payload,
-          commitMessage: commitMessage || `Update ${activeSection} via Portfolio CMS Admin`,
+          commitMessage: commitMessage || `Update ${activeSection} via Portfolio Studio`,
         }),
       });
 
@@ -165,7 +163,7 @@ export default function AdminDashboardPage() {
       if (result.success) {
         setNotification({
           type: 'success',
-          message: `${result.message} ${result.result?.destination === 'github' ? 'Changes pushed to GitHub. Vercel deployment triggered!' : 'Local workspace JSON updated.'}`,
+          message: `${result.message} ${result.result?.destination === 'github' ? 'Changes committed to GitHub. Vercel build triggered!' : 'Local workspace JSON updated.'}`,
         });
         setShowCommitModal(false);
         setCommitMessage('');
@@ -183,7 +181,7 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Render Login Lock Screen if unauthenticated
+  // Login Screen
   if (isAuthed === false) {
     return (
       <div className={styles.loginContainer}>
@@ -193,13 +191,13 @@ export default function AdminDashboardPage() {
           </div>
           <h1 className={styles.loginTitle}>Admin Console</h1>
           <p className={styles.loginSubtitle}>
-            Enter your master password to authenticate and edit portfolio content.
+            Enter your master password to manage portfolio content.
           </p>
           <form onSubmit={handleLogin}>
             <div className={styles.loginInputWrap}>
               <input
                 type="password"
-                placeholder="Enter admin password..."
+                placeholder="Enter password..."
                 className={styles.loginInput}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -219,7 +217,7 @@ export default function AdminDashboardPage() {
             </button>
           </form>
           <div className={styles.loginFooter}>
-            Session protected with secure HttpOnly cookies
+            Secured via HttpOnly credentials
           </div>
         </div>
       </div>
@@ -231,57 +229,60 @@ export default function AdminDashboardPage() {
       <div className={styles.loginContainer}>
         <div style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
           <RefreshIcon size={18} />
-          <span>Verifying credentials...</span>
+          <span>Verifying authorization...</span>
         </div>
       </div>
     );
   }
 
-  // Active Section Title Formatter
   const currentNav = NAV_ITEMS.find((n) => n.id === activeSection);
 
   return (
     <div className={styles.adminRoot}>
-      {/* Top Header */}
+      {/* ── Top Header Bar ── */}
       <header className={styles.topNav}>
         <div className={styles.navBrand}>
-          <button
-            type="button"
-            className={styles.mobileMenuBtn}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation"
-          >
-            {mobileMenuOpen ? <CloseIcon size={20} /> : <MenuIcon size={20} />}
-          </button>
           <span className={styles.brandPill}>CMS</span>
-          <h1 className={styles.brandName}>
-            Abdul Malik Hussain <span>· Portfolio Studio</span>
-          </h1>
+          <span className={styles.brandName}>Portfolio Studio</span>
         </div>
 
         <div className={styles.navActions}>
-          <span className={styles.connectionBadge}>
+          <span className={styles.connectionBadge} title={githubConnected ? 'GitHub API sync active' : 'Local file system mode'}>
             <span className={styles.connectionDot}></span>
-            <GitHubIcon size={14} />
-            <span>{githubConnected ? 'GitHub Live' : 'Local Data'}</span>
+            <GitHubIcon size={13} />
+            <span>{githubConnected ? 'Live' : 'Local'}</span>
           </span>
 
-          <a href="/" target="_blank" rel="noopener noreferrer" className={styles.siteLink}>
-            <span>View Site</span>
-            <ExternalLinkIcon size={14} />
+          <a href="/" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} title="View live site">
+            <span>Site</span>
+            <ExternalLinkIcon size={13} />
           </a>
 
-          <button onClick={handleLogout} className={styles.logoutBtn} title="Log Out">
+          <button onClick={handleLogout} className={styles.logoutBtn} title="Sign Out">
             <LogOutIcon size={15} />
-            <span>Exit</span>
           </button>
         </div>
       </header>
 
-      {/* Main Body */}
+      {/* ── Mobile Horizontal Swipeable Tabs Strip ── */}
+      <div className={styles.mobileTabsStrip}>
+        {NAV_ITEMS.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => loadSection(item.id)}
+            className={`${styles.mobileTabItem} ${activeSection === item.id ? styles.mobileTabItemActive : ''}`}
+          >
+            <span>{item.icon}</span>
+            <span>{item.shortLabel}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* ── Main Dashboard ── */}
       <div className={styles.dashboardBody}>
-        {/* Sidebar Nav */}
-        <aside className={`${styles.sidebar} ${mobileMenuOpen ? styles.sidebarOpen : ''}`}>
+        {/* Desktop Sidebar */}
+        <aside className={styles.sidebar}>
           <div className={styles.sidebarGroupLabel}>Content Architecture</div>
           {NAV_ITEMS.map((item) => (
             <button
@@ -289,42 +290,38 @@ export default function AdminDashboardPage() {
               onClick={() => loadSection(item.id)}
               className={`${styles.navButton} ${activeSection === item.id ? styles.navButtonActive : ''}`}
             >
-              <span className={styles.navButtonIcon}>{item.icon}</span>
+              <span>{item.icon}</span>
               <span>{item.label}</span>
             </button>
           ))}
 
           <div className={styles.sidebarFooter}>
-            <div style={{ color: '#ffd23f', fontWeight: 600, marginBottom: '0.35rem' }}>
+            <div style={{ color: '#ffd23f', fontWeight: 600, marginBottom: '0.25rem' }}>
               Publishing Workflow
             </div>
             1. Edit Form or JSON<br />
             2. Validate schema<br />
-            3. Commit directly to GitHub<br />
+            3. Direct GitHub push<br />
             4. Vercel auto-deploys
           </div>
         </aside>
 
         {/* Content Viewport */}
         <main className={styles.mainViewport}>
-          {/* Status Notifications */}
+          {/* Notifications */}
           {notification && (
             <div className={notification.type === 'success' ? styles.bannerSuccess : styles.bannerError}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                {notification.type === 'success' ? <CheckCircleIcon size={18} /> : <AlertCircleIcon size={18} />}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                {notification.type === 'success' ? <CheckCircleIcon size={16} /> : <AlertCircleIcon size={16} />}
                 <span>{notification.message}</span>
               </div>
-              <button
-                onClick={() => setNotification(null)}
-                className={styles.bannerCloseBtn}
-                aria-label="Close notification"
-              >
-                <CloseIcon size={16} />
+              <button onClick={() => setNotification(null)} className={styles.bannerCloseBtn}>
+                <CloseIcon size={15} />
               </button>
             </div>
           )}
 
-          {/* Section Controller */}
+          {/* Section Header Controls */}
           <div className={styles.viewHeader}>
             <div className={styles.titleArea}>
               <h2 className={styles.viewTitle}>
@@ -332,20 +329,20 @@ export default function AdminDashboardPage() {
                 <span>{currentNav?.label}</span>
               </h2>
               <p className={styles.viewSubtitle}>
-                Edit and preview section content. Every update is verified by strict Zod schema validation.
+                Edit and save changes. Every save is validated against the data schema.
               </p>
             </div>
 
+            {/* Desktop Action Row */}
             <div className={styles.actionRow}>
-              {/* Segmented Switcher */}
               <div className={styles.modeSegmented}>
                 <button
                   type="button"
                   onClick={() => setViewMode('form')}
                   className={`${styles.segmentBtn} ${viewMode === 'form' ? styles.segmentBtnActive : ''}`}
                 >
-                  <EditIcon size={14} />
-                  <span>Form View</span>
+                  <EditIcon size={13} />
+                  <span>Form</span>
                 </button>
                 <button
                   type="button"
@@ -355,20 +352,19 @@ export default function AdminDashboardPage() {
                   }}
                   className={`${styles.segmentBtn} ${viewMode === 'json' ? styles.segmentBtnActive : ''}`}
                 >
-                  <CodeIcon size={14} />
-                  <span>Raw JSON</span>
+                  <CodeIcon size={13} />
+                  <span>JSON</span>
                 </button>
               </div>
 
-              {/* Publish Action Button */}
               <button
                 type="button"
                 onClick={() => setShowCommitModal(true)}
                 disabled={isLoading || isSaving}
                 className={styles.publishPrimaryBtn}
               >
-                <SaveIcon size={16} />
-                <span>Publish Section</span>
+                <SaveIcon size={15} />
+                <span>Publish</span>
               </button>
             </div>
           </div>
@@ -376,14 +372,14 @@ export default function AdminDashboardPage() {
           {isLoading ? (
             <div style={{ padding: '3rem 0', textAlign: 'center', color: '#94a3b8' }}>
               <RefreshIcon size={24} style={{ animation: 'spin 1s linear infinite', marginBottom: '0.5rem' }} />
-              <div>Loading section data...</div>
+              <div>Loading data...</div>
             </div>
           ) : viewMode === 'json' ? (
             /* ── JSON Raw Code Mode ── */
             <div className={styles.codeEditorWrapper}>
               <div className={styles.codeEditorHeader}>
                 <span>src/data/content/{activeSection}.json</span>
-                <span>Type: UTF-8 JSON</span>
+                <span>Validates on Publish</span>
               </div>
               <textarea
                 value={rawJson}
@@ -393,14 +389,14 @@ export default function AdminDashboardPage() {
               />
             </div>
           ) : (
-            /* ── Dedicated Clean Form Editors ── */
+            /* ── Dedicated Form Editors ── */
             <div>
               {/* 1. Profile Section Form */}
               {activeSection === 'profile' && contentData && (
                 <>
                   <div className={styles.cardSection}>
                     <div className={styles.cardHeader}>
-                      <h3 className={styles.cardHeading}>Identity & Hero Presentation</h3>
+                      <h3 className={styles.cardHeading}>Identity & Hero</h3>
                       <span className={styles.cardBadge}>Core Profile</span>
                     </div>
 
@@ -415,7 +411,7 @@ export default function AdminDashboardPage() {
                         />
                       </div>
                       <div className={styles.fieldGroup}>
-                        <label className={styles.fieldLabel}>Professional Role</label>
+                        <label className={styles.fieldLabel}>Role / Designation</label>
                         <input
                           type="text"
                           value={contentData.role || ''}
@@ -436,7 +432,7 @@ export default function AdminDashboardPage() {
                     </div>
 
                     <div className={styles.fieldGroup}>
-                      <label className={styles.fieldLabel}>Subheadline</label>
+                      <label className={styles.fieldLabel}>Hero Subheadline</label>
                       <textarea
                         value={contentData.subheadline || ''}
                         onChange={(e) => setContentData({ ...contentData, subheadline: e.target.value })}
@@ -469,12 +465,12 @@ export default function AdminDashboardPage() {
 
                   <div className={styles.cardSection}>
                     <div className={styles.cardHeader}>
-                      <h3 className={styles.cardHeading}>Biography & Copy</h3>
-                      <span className={styles.cardBadge}>About Section</span>
+                      <h3 className={styles.cardHeading}>About & Biography</h3>
+                      <span className={styles.cardBadge}>Bio</span>
                     </div>
 
                     <div className={styles.fieldGroup}>
-                      <label className={styles.fieldLabel}>Short Bio (Summary Card)</label>
+                      <label className={styles.fieldLabel}>Short Summary Bio</label>
                       <textarea
                         value={contentData.shortBio || ''}
                         onChange={(e) => setContentData({ ...contentData, shortBio: e.target.value })}
@@ -485,7 +481,7 @@ export default function AdminDashboardPage() {
 
                     {contentData.fullBio?.map((paragraph: string, pIdx: number) => (
                       <div key={pIdx} className={styles.fieldGroup}>
-                        <label className={styles.fieldLabel}>Full Bio (Paragraph {pIdx + 1})</label>
+                        <label className={styles.fieldLabel}>Bio Paragraph {pIdx + 1}</label>
                         <textarea
                           value={paragraph}
                           onChange={(e) => {
@@ -502,8 +498,8 @@ export default function AdminDashboardPage() {
 
                   <div className={styles.cardSection}>
                     <div className={styles.cardHeader}>
-                      <h3 className={styles.cardHeading}>Direct Communication Channels</h3>
-                      <span className={styles.cardBadge}>Contact Links</span>
+                      <h3 className={styles.cardHeading}>Contact & Social Channels</h3>
+                      <span className={styles.cardBadge}>Links</span>
                     </div>
 
                     <div className={styles.gridTwoCol}>
@@ -522,7 +518,7 @@ export default function AdminDashboardPage() {
                         />
                       </div>
                       <div className={styles.fieldGroup}>
-                        <label className={styles.fieldLabel}>WhatsApp (International Format)</label>
+                        <label className={styles.fieldLabel}>WhatsApp Number</label>
                         <input
                           type="text"
                           value={contentData.contact?.whatsapp || ''}
@@ -536,7 +532,7 @@ export default function AdminDashboardPage() {
                         />
                       </div>
                       <div className={styles.fieldGroup}>
-                        <label className={styles.fieldLabel}>LinkedIn Profile URL</label>
+                        <label className={styles.fieldLabel}>LinkedIn URL</label>
                         <input
                           type="url"
                           value={contentData.contact?.linkedin || ''}
@@ -550,7 +546,7 @@ export default function AdminDashboardPage() {
                         />
                       </div>
                       <div className={styles.fieldGroup}>
-                        <label className={styles.fieldLabel}>Booking / Diagnostic Link</label>
+                        <label className={styles.fieldLabel}>Booking / Calendly Link</label>
                         <input
                           type="text"
                           value={contentData.contact?.calendarLink || ''}
@@ -573,8 +569,8 @@ export default function AdminDashboardPage() {
                 <>
                   <div className={styles.cardSection}>
                     <div className={styles.cardHeader}>
-                      <h3 className={styles.cardHeading}>Highlight Metrics Strip</h3>
-                      <span className={styles.cardBadge}>4 Highlight Cards</span>
+                      <h3 className={styles.cardHeading}>Highlight Metric Tiles</h3>
+                      <span className={styles.cardBadge}>4 Tiles</span>
                     </div>
                     <div className={styles.gridTwoCol}>
                       {contentData.highlights?.map((hl: any, idx: number) => (
@@ -597,7 +593,7 @@ export default function AdminDashboardPage() {
                             />
                           </div>
                           <div className={styles.fieldGroup}>
-                            <label className={styles.fieldLabel}>Metric Label</label>
+                            <label className={styles.fieldLabel}>Tile Label</label>
                             <input
                               type="text"
                               value={hl.label || ''}
@@ -619,7 +615,7 @@ export default function AdminDashboardPage() {
                       <h3 className={styles.cardHeading}>
                         Numbered Case Studies ({contentData.caseStudies?.length || 0})
                       </h3>
-                      <span className={styles.cardBadge}>Client Work</span>
+                      <span className={styles.cardBadge}>Results</span>
                     </div>
 
                     {contentData.caseStudies?.map((cs: any, idx: number) => (
@@ -643,22 +639,6 @@ export default function AdminDashboardPage() {
                           />
                         </div>
 
-                        {cs.subline !== undefined && (
-                          <div className={styles.fieldGroup}>
-                            <label className={styles.fieldLabel}>Subline (Optional)</label>
-                            <input
-                              type="text"
-                              value={cs.subline || ''}
-                              onChange={(e) => {
-                                const studies = [...contentData.caseStudies];
-                                studies[idx].subline = e.target.value;
-                                setContentData({ ...contentData, caseStudies: studies });
-                              }}
-                              className={styles.fieldInput}
-                            />
-                          </div>
-                        )}
-
                         <div className={styles.gridThreeCol}>
                           {cs.metrics?.map((m: any, mIdx: number) => (
                             <div key={mIdx} className={styles.fieldGroup}>
@@ -678,7 +658,7 @@ export default function AdminDashboardPage() {
                         </div>
 
                         <div className={styles.fieldGroup}>
-                          <label className={styles.fieldLabel}>What I Did (Bullet Points)</label>
+                          <label className={styles.fieldLabel}>What I Did (Accomplishments)</label>
                           {cs.whatIDid?.map((point: string, pIdx: number) => (
                             <textarea
                               key={pIdx}
@@ -690,7 +670,7 @@ export default function AdminDashboardPage() {
                               }}
                               className={styles.fieldTextarea}
                               rows={2}
-                              style={{ marginBottom: '0.5rem' }}
+                              style={{ marginBottom: '0.4rem' }}
                             />
                           ))}
                         </div>
@@ -733,7 +713,7 @@ export default function AdminDashboardPage() {
                             />
                           </div>
                           <div className={styles.fieldGroup}>
-                            <label className={styles.fieldLabel}>Number Value</label>
+                            <label className={styles.fieldLabel}>Value</label>
                             <input
                               type="number"
                               value={stat.value}
@@ -782,7 +762,7 @@ export default function AdminDashboardPage() {
               {activeSection === 'skills' && Array.isArray(contentData) && (
                 <div className={styles.cardSection}>
                   <div className={styles.cardHeader}>
-                    <h3 className={styles.cardHeading}>Skill Groups & Tags</h3>
+                    <h3 className={styles.cardHeading}>Skill Groups & Tools</h3>
                     <span className={styles.cardBadge}>{contentData.length} Groups</span>
                   </div>
 
@@ -830,7 +810,7 @@ export default function AdminDashboardPage() {
               {activeSection === 'experience' && Array.isArray(contentData) && (
                 <div className={styles.cardSection}>
                   <div className={styles.cardHeader}>
-                    <h3 className={styles.cardHeading}>Timeline Entries</h3>
+                    <h3 className={styles.cardHeading}>Career & Education Timeline</h3>
                     <span className={styles.cardBadge}>{contentData.length} Items</span>
                   </div>
 
@@ -845,7 +825,7 @@ export default function AdminDashboardPage() {
 
                       <div className={styles.gridTwoCol}>
                         <div className={styles.fieldGroup}>
-                          <label className={styles.fieldLabel}>Title / Role</label>
+                          <label className={styles.fieldLabel}>Role / Degree</label>
                           <input
                             type="text"
                             value={exp.title || ''}
@@ -858,7 +838,7 @@ export default function AdminDashboardPage() {
                           />
                         </div>
                         <div className={styles.fieldGroup}>
-                          <label className={styles.fieldLabel}>Organisation / Company</label>
+                          <label className={styles.fieldLabel}>Organisation / University</label>
                           <input
                             type="text"
                             value={exp.organisation || ''}
@@ -986,7 +966,7 @@ export default function AdminDashboardPage() {
                 <>
                   <div className={styles.cardSection}>
                     <div className={styles.cardHeader}>
-                      <h3 className={styles.cardHeading}>Four-Step Process</h3>
+                      <h3 className={styles.cardHeading}>Process Steps</h3>
                       <span className={styles.cardBadge}>How I Work</span>
                     </div>
 
@@ -1033,7 +1013,7 @@ export default function AdminDashboardPage() {
                   <div className={styles.cardSection}>
                     <div className={styles.cardHeader}>
                       <h3 className={styles.cardHeading}>Three Things I Check First</h3>
-                      <span className={styles.cardBadge}>Account Health Leaks</span>
+                      <span className={styles.cardBadge}>Audit Leaks</span>
                     </div>
 
                     {contentData.threeChecks?.items?.map((check: any, idx: number) => (
@@ -1045,7 +1025,7 @@ export default function AdminDashboardPage() {
                           <span className={styles.itemTag}>{check.badge}</span>
                         </div>
                         <div className={styles.fieldGroup}>
-                          <label className={styles.fieldLabel}>Check Title</label>
+                          <label className={styles.fieldLabel}>Leak Title</label>
                           <input
                             type="text"
                             value={check.title || ''}
@@ -1086,24 +1066,59 @@ export default function AdminDashboardPage() {
         </main>
       </div>
 
-      {/* Commit & Publish Confirmation Modal */}
+      {/* ── Mobile Sticky Bottom Action Bar ── */}
+      <div className={styles.mobileStickyBar}>
+        <div className={styles.modeSegmented}>
+          <button
+            type="button"
+            onClick={() => setViewMode('form')}
+            className={`${styles.segmentBtn} ${viewMode === 'form' ? styles.segmentBtnActive : ''}`}
+          >
+            <EditIcon size={13} />
+            <span>Form</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setRawJson(JSON.stringify(contentData, null, 2));
+              setViewMode('json');
+            }}
+            className={`${styles.segmentBtn} ${viewMode === 'json' ? styles.segmentBtnActive : ''}`}
+          >
+            <CodeIcon size={13} />
+            <span>JSON</span>
+          </button>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setShowCommitModal(true)}
+          disabled={isLoading || isSaving}
+          className={styles.mobilePublishBtn}
+        >
+          <SaveIcon size={15} />
+          <span>Publish {currentNav?.shortLabel}</span>
+        </button>
+      </div>
+
+      {/* ── Commit & Publish Confirmation Modal ── */}
       {showCommitModal && (
         <div className={styles.modalBackdrop}>
           <div className={styles.modalBox}>
             <h3 className={styles.modalTitle}>
-              <SaveIcon size={20} />
-              <span>Confirm & Publish Changes</span>
+              <SaveIcon size={18} />
+              <span>Confirm & Publish</span>
             </h3>
             <p className={styles.modalDesc}>
-              This action validates your changes against the data schema and commits directly to{' '}
+              This will validate against the schema and commit directly to{' '}
               <strong style={{ color: '#ffd23f' }}>
-                {githubConnected ? 'GitHub (main branch)' : 'local workspace'}
+                {githubConnected ? 'GitHub (main branch)' : 'workspace JSON'}
               </strong>
-              {githubConnected && ', triggering an automated Vercel production rebuild.'}
+              {githubConnected && ', triggering a Vercel production rebuild.'}
             </p>
 
             <div className={styles.fieldGroup}>
-              <label className={styles.fieldLabel}>Commit / Change Summary</label>
+              <label className={styles.fieldLabel}>Commit Summary</label>
               <input
                 type="text"
                 placeholder={`Update ${activeSection} via Portfolio Studio`}
@@ -1127,7 +1142,7 @@ export default function AdminDashboardPage() {
                 disabled={isSaving}
                 className={styles.publishPrimaryBtn}
               >
-                {isSaving ? 'Validating & Committing...' : 'Confirm & Commit'}
+                {isSaving ? 'Validating...' : 'Confirm'}
               </button>
             </div>
           </div>
