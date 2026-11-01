@@ -23,7 +23,7 @@ export class GitHubService {
    * @param fileName e.g. "profile.json"
    */
   async getFileContent(fileName: string): Promise<{ data: any; sha?: string; source: 'github' | 'local' }> {
-    const gitHubPath = `portfolio-source/src/data/content/${fileName}`;
+    const gitHubPath = `src/data/content/${fileName}`;
 
     // If GitHub Token is configured, fetch from GitHub
     if (this.token) {
@@ -70,7 +70,7 @@ export class GitHubService {
     jsonData: any,
     commitMessage: string
   ): Promise<{ success: boolean; sha?: string; destination: 'github' | 'local'; message: string }> {
-    const gitHubPath = `portfolio-source/src/data/content/${fileName}`;
+    const gitHubPath = `src/data/content/${fileName}`;
     const formattedContent = JSON.stringify(jsonData, null, 2) + '\n';
 
     // If GitHub Token is configured, commit via GitHub API
