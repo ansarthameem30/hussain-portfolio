@@ -109,9 +109,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3. Update profile.json with cache-busting timestamp
-    const timestamp = Date.now();
-    const newHeadshotUrl = `/${fileName}?v=${timestamp}`;
+    // 3. Update profile.json
+    const newHeadshotUrl = `/${fileName}`;
 
     // Get current profile content safely
     let profileJson: any;

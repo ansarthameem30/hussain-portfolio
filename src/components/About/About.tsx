@@ -32,6 +32,7 @@ export default function About() {
                 height={460}
                 className={styles.photo}
                 priority={false}
+                unoptimized
               />
               <div className={styles.photoOverlay} />
               <div className={styles.photoBadge}>

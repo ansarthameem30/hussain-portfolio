@@ -2,13 +2,22 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    localPatterns: [
+      {
+        pathname: '/**',
+        search: '?*',
+      },
+      {
+        pathname: '/**',
+        search: '',
+      },
+    ],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "**",
       },
     ],
-    // Placeholder while real headshot not available
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
   },
