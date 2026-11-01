@@ -31,8 +31,22 @@ export const ProfileSchema = z.object({
   headline: z.string(),
   subheadline: z.string(),
   smallLine: z.string(),
-  headshot: z.string(),
+  headshot: z.string().optional(),
   contact: ContactLinksSchema,
+  navLinks: z
+    .array(
+      z.object({
+        label: z.string(),
+        href: z.string(),
+      })
+    )
+    .optional(),
+  footer: z
+    .object({
+      copyright: z.string(),
+      subtext: z.string().optional(),
+    })
+    .optional(),
 });
 
 export type ProfileData = z.infer<typeof ProfileSchema>;

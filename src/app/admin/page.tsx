@@ -21,9 +21,20 @@ import {
   GitHubIcon,
   RefreshIcon,
   CloseIcon,
+  SparklesIcon,
+  UploadIcon,
+  FileTextIcon,
 } from '@/components/Icons/AdminIcons';
 
-type ContentType = 'profile' | 'projects' | 'skills' | 'experience' | 'certifications' | 'stats' | 'workflow';
+type ContentType =
+  | 'profile'
+  | 'projects'
+  | 'skills'
+  | 'experience'
+  | 'certifications'
+  | 'stats'
+  | 'workflow'
+  | 'creative';
 
 interface SectionNavItem {
   id: ContentType;
@@ -40,6 +51,7 @@ const NAV_ITEMS: SectionNavItem[] = [
   { id: 'experience', label: 'Experience & Timeline', shortLabel: 'Timeline', icon: <BriefcaseIcon size={16} /> },
   { id: 'certifications', label: 'Certifications', shortLabel: 'Certs', icon: <AwardIcon size={16} /> },
   { id: 'workflow', label: 'How I Work & Leaks', shortLabel: 'Workflow', icon: <GitMergeIcon size={16} /> },
+  { id: 'creative', label: 'Creative Gallery', shortLabel: 'Creative', icon: <SparklesIcon size={16} /> },
 ];
 
 export default function AdminDashboardPage() {
@@ -62,6 +74,37 @@ export default function AdminDashboardPage() {
   // Commit modal
   const [showCommitModal, setShowCommitModal] = useState(false);
   const [commitMessage, setCommitMessage] = useState('');
+
+  // Resume upload state
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [isUploadingResume, setIsUploadingResume] = useState(false);
+  const [resumeUploadMsg, setResumeUploadMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const handleResumeUpload = async () => {
+    if (!resumeFile) return;
+    setIsUploadingResume(true);
+    setResumeUploadMsg(null);
+    try {
+      const formData = new FormData();
+      formData.append('resume', resumeFile);
+      const res = await fetch('/api/admin/upload-resume', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setResumeUploadMsg({ type: 'success', text: data.message });
+        setResumeFile(null);
+        loadSection('profile');
+      } else {
+        setResumeUploadMsg({ type: 'error', text: data.error || 'Failed to upload resume.' });
+      }
+    } catch {
+      setResumeUploadMsg({ type: 'error', text: 'Network error uploading resume.' });
+    } finally {
+      setIsUploadingResume(false);
+    }
+  };
 
   // Check auth on load
   useEffect(() => {
@@ -559,6 +602,81 @@ export default function AdminDashboardPage() {
                           className={styles.fieldInput}
                         />
                       </div>
+                    </div>
+                  </div>
+
+                  {/* PDF Resume Management Card */}
+                  <div className={styles.cardSection}>
+                    <div className={styles.cardHeader}>
+                      <h3 className={styles.cardHeading}>
+                        <FileTextIcon size={16} />
+                        <span>Resume Management (PDF)</span>
+                      </h3>
+                      <span className={styles.cardBadge}>Direct Upload & Replace</span>
+                    </div>
+
+                    <div className={styles.resumeUploadCard}>
+                      <div className={styles.resumeCardHeader}>
+                        <div className={styles.resumeStatus}>
+                          <CheckCircleIcon size={16} style={{ color: '#10b981' }} />
+                          <span>Current File: <strong>Abdul-Malik-Hussain-Performance-Marketing.pdf</strong></span>
+                        </div>
+                        <a
+                          href={contentData.contact?.resumeUrl || '/Abdul-Malik-Hussain-Performance-Marketing.pdf'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.fileChooseBtn}
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <span>Preview Current PDF</span>
+                          <ExternalLinkIcon size={14} />
+                        </a>
+                      </div>
+
+                      <div className={styles.resumeFilePicker}>
+                        <label className={styles.fileChooseBtn}>
+                          <UploadIcon size={15} />
+                          <span>{resumeFile ? resumeFile.name : 'Select New PDF Resume'}</span>
+                          <input
+                            type="file"
+                            accept=".pdf,application/pdf"
+                            className={styles.fileInputHidden}
+                            onChange={(e) => {
+                              if (e.target.files && e.target.files[0]) {
+                                setResumeFile(e.target.files[0]);
+                                setResumeUploadMsg(null);
+                              }
+                            }}
+                          />
+                        </label>
+
+                        {resumeFile && (
+                          <button
+                            type="button"
+                            onClick={handleResumeUpload}
+                            disabled={isUploadingResume}
+                            className={styles.fileUploadSubmitBtn}
+                          >
+                            <SaveIcon size={14} />
+                            <span>{isUploadingResume ? 'Uploading...' : 'Upload & Replace Resume'}</span>
+                          </button>
+                        )}
+                      </div>
+
+                      {resumeUploadMsg && (
+                        <div
+                          style={{
+                            fontSize: '0.825rem',
+                            color: resumeUploadMsg.type === 'success' ? '#34d399' : '#f87171',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem',
+                          }}
+                        >
+                          {resumeUploadMsg.type === 'success' ? <CheckCircleIcon size={15} /> : <AlertCircleIcon size={15} />}
+                          <span>{resumeUploadMsg.text}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </>
@@ -1061,6 +1179,158 @@ export default function AdminDashboardPage() {
                   </div>
                 </>
               )}
+
+              {/* ── Creative Gallery Section Form ── */}
+              {activeSection === 'creative' && (
+                <>
+                  <div className={styles.cardSection}>
+                    <div className={styles.cardHeader}>
+                      <h3 className={styles.cardHeading}>Creative Showcase Header</h3>
+                      <span className={styles.cardBadge}>Copy & Positioning</span>
+                    </div>
+
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Section Heading</label>
+                      <input
+                        type="text"
+                        value={contentData.heading || ''}
+                        onChange={(e) => setContentData({ ...contentData, heading: e.target.value })}
+                        className={styles.fieldInput}
+                      />
+                    </div>
+
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Confidentiality Disclaimer</label>
+                      <input
+                        type="text"
+                        value={contentData.disclaimer || ''}
+                        onChange={(e) => setContentData({ ...contentData, disclaimer: e.target.value })}
+                        className={styles.fieldInput}
+                      />
+                    </div>
+
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Subheading / Intro</label>
+                      <textarea
+                        value={contentData.subheading || ''}
+                        onChange={(e) => setContentData({ ...contentData, subheading: e.target.value })}
+                        className={styles.fieldTextarea}
+                        rows={2}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.cardSection}>
+                    <div className={styles.cardHeader}>
+                      <h3 className={styles.cardHeading}>
+                        <span>Creative Assets ({contentData.items?.length || 0})</span>
+                      </h3>
+                      <span className={styles.cardBadge}>Reels & High-CTR Posts</span>
+                    </div>
+
+                    {contentData.items?.map((item: any, idx: number) => (
+                      <div key={item.id || idx} className={styles.itemCard}>
+                        <div className={styles.itemHeader}>
+                          <span className={styles.itemTitle}>
+                            #{idx + 1} {item.title}
+                          </span>
+                          <span className={styles.itemTag}>
+                            {item.format?.toUpperCase()} · {item.categoryLabel || item.category}
+                          </span>
+                        </div>
+
+                        <div className={styles.fieldGrid2}>
+                          <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Asset Title</label>
+                            <input
+                              type="text"
+                              value={item.title || ''}
+                              onChange={(e) => {
+                                const newItems = [...contentData.items];
+                                newItems[idx].title = e.target.value;
+                                setContentData({ ...contentData, items: newItems });
+                              }}
+                              className={styles.fieldInput}
+                            />
+                          </div>
+
+                          <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Format (reel | post | carousel)</label>
+                            <input
+                              type="text"
+                              value={item.format || ''}
+                              onChange={(e) => {
+                                const newItems = [...contentData.items];
+                                newItems[idx].format = e.target.value;
+                                setContentData({ ...contentData, items: newItems });
+                              }}
+                              className={styles.fieldInput}
+                            />
+                          </div>
+                        </div>
+
+                        <div className={styles.fieldGroup}>
+                          <label className={styles.fieldLabel}>Hook / Punchline</label>
+                          <input
+                            type="text"
+                            value={item.hook || ''}
+                            onChange={(e) => {
+                              const newItems = [...contentData.items];
+                              newItems[idx].hook = e.target.value;
+                              setContentData({ ...contentData, items: newItems });
+                            }}
+                            className={styles.fieldInput}
+                          />
+                        </div>
+
+                        <div className={styles.fieldGroup}>
+                          <label className={styles.fieldLabel}>Strategy & Concept Description</label>
+                          <textarea
+                            value={item.description || ''}
+                            onChange={(e) => {
+                              const newItems = [...contentData.items];
+                              newItems[idx].description = e.target.value;
+                              setContentData({ ...contentData, items: newItems });
+                            }}
+                            className={styles.fieldTextarea}
+                            rows={2}
+                          />
+                        </div>
+
+                        <div className={styles.fieldGrid2}>
+                          <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Performance Highlight (CTR / CVR)</label>
+                            <input
+                              type="text"
+                              value={item.performanceHighlight || ''}
+                              onChange={(e) => {
+                                const newItems = [...contentData.items];
+                                newItems[idx].performanceHighlight = e.target.value;
+                                setContentData({ ...contentData, items: newItems });
+                              }}
+                              className={styles.fieldInput}
+                            />
+                          </div>
+
+                          <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Duration / Ratio</label>
+                            <input
+                              type="text"
+                              value={item.duration || item.ratio || ''}
+                              onChange={(e) => {
+                                const newItems = [...contentData.items];
+                                newItems[idx].duration = e.target.value;
+                                setContentData({ ...contentData, items: newItems });
+                              }}
+                              className={styles.fieldInput}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           )}
         </main>
@@ -1101,24 +1371,45 @@ export default function AdminDashboardPage() {
         </button>
       </div>
 
-      {/* ── Commit & Publish Confirmation Modal ── */}
+      {/* ── Commit & Publish Confirmation Modal with Live Preview ── */}
       {showCommitModal && (
         <div className={styles.modalBackdrop}>
           <div className={styles.modalBox}>
-            <h3 className={styles.modalTitle}>
-              <SaveIcon size={18} />
-              <span>Confirm & Publish</span>
-            </h3>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+              <h3 className={styles.modalTitle} style={{ margin: 0 }}>
+                <SaveIcon size={18} />
+                <span>Confirm & Publish Changes</span>
+              </h3>
+              <span className={styles.cardBadge} style={{ textTransform: 'uppercase' }}>
+                {activeSection}
+              </span>
+            </div>
+
             <p className={styles.modalDesc}>
-              This will validate against the schema and commit directly to{' '}
+              Preview the updated JSON payload below. Once confirmed, this will validate against the schema and commit directly to{' '}
               <strong style={{ color: '#ffd23f' }}>
                 {githubConnected ? 'GitHub (main branch)' : 'workspace JSON'}
               </strong>
-              {githubConnected && ', triggering a Vercel production rebuild.'}
+              {githubConnected && ', triggering an automatic production build on Vercel.'}
             </p>
 
-            <div className={styles.fieldGroup}>
-              <label className={styles.fieldLabel}>Commit Summary</label>
+            {/* Live Payload Preview */}
+            <div style={{ marginBottom: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Live Payload Preview ({activeSection}.json)
+                </span>
+                <span style={{ fontSize: '0.72rem', color: '#ffd23f' }}>
+                  {Array.isArray(contentData) ? `${contentData.length} entries` : typeof contentData === 'object' && contentData ? `${Object.keys(contentData).length} fields` : ''}
+                </span>
+              </div>
+              <div className={styles.previewScrollBox}>
+                {viewMode === 'json' ? rawJson : JSON.stringify(contentData, null, 2)}
+              </div>
+            </div>
+
+            <div className={styles.fieldGroup} style={{ marginBottom: '1rem' }}>
+              <label className={styles.fieldLabel}>Commit Summary / Note</label>
               <input
                 type="text"
                 placeholder={`Update ${activeSection} via Portfolio Studio`}
@@ -1134,7 +1425,7 @@ export default function AdminDashboardPage() {
                 onClick={() => setShowCommitModal(false)}
                 className={styles.secondaryActionBtn}
               >
-                Cancel
+                Back to Edit
               </button>
               <button
                 type="button"
@@ -1142,7 +1433,7 @@ export default function AdminDashboardPage() {
                 disabled={isSaving}
                 className={styles.publishPrimaryBtn}
               >
-                {isSaving ? 'Validating...' : 'Confirm'}
+                {isSaving ? 'Validating & Publishing...' : 'Confirm & Publish'}
               </button>
             </div>
           </div>

@@ -1,11 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  creativeConfig,
-  type CreativeCategory,
-  type CreativeItem,
-} from '@/config/content/creative.config';
+import creativeConfig from '@/data/content/creative.json';
+export type CreativeCategory = string;
+export interface CreativeItem {
+  id: string;
+  title: string;
+  format: 'reel' | 'post';
+  category: string;
+  categoryLabel: string;
+  hook: string;
+  description: string;
+  duration?: string;
+  ratio: '9:16' | '1:1' | '4:5';
+  tags: string[];
+  performanceHighlight: string;
+  colorScheme: {
+    bg: string;
+    accent: string;
+    badge: string;
+  };
+}
 import styles from './CreativeGallery.module.css';
 import {
   PlayIcon,
@@ -20,10 +35,11 @@ export default function CreativeGallery() {
   const [activeCategory, setActiveCategory] = useState<CreativeCategory>('all');
   const [selectedItem, setSelectedItem] = useState<CreativeItem | null>(null);
 
+  const items = creativeConfig.items as unknown as CreativeItem[];
   const filteredItems =
     activeCategory === 'all'
-      ? creativeConfig.items
-      : creativeConfig.items.filter((item) => item.category === activeCategory);
+      ? items
+      : items.filter((item) => item.category === activeCategory);
 
   return (
     <section id="creative" className={`section ${styles.section}`}>

@@ -197,19 +197,19 @@ export default function Contact() {
       <footer className={styles.footer}>
         <div className="container">
           <div className={styles.footerInner}>
-            <p className={styles.footerCopy}>{contactConfig.footer.copyright}</p>
+            <p className={styles.footerCopy}>{profileData.footer?.copyright || contactConfig.footer.copyright}</p>
             <div className={styles.footerLinks}>
-              <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer">
+              <a href={profileData.contact?.linkedin || siteConfig.linkedin} target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
               <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, '')}`}
+                href={`https://wa.me/${(profileData.contact?.whatsapp || siteConfig.whatsapp).replace(/\D/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 WhatsApp
               </a>
-              <a href={siteConfig.resumeUrl} download>
+              <a href={profileData.contact?.resumeUrl || siteConfig.resumeUrl} download>
                 Resume
               </a>
             </div>

@@ -59,7 +59,8 @@ export type ContentType =
   | 'skills'
   | 'experience'
   | 'certifications'
-  | 'workflow';
+  | 'workflow'
+  | 'creative';
 
 export function validateContent(type: ContentType, data: unknown): { success: true; data: any } | { success: false; error: any } {
   switch (type) {
@@ -90,6 +91,9 @@ export function validateContent(type: ContentType, data: unknown): { success: tr
     case 'workflow': {
       const res = WorkflowSchema.safeParse(data);
       return res.success ? { success: true, data: res.data } : { success: false, error: res.error };
+    }
+    case 'creative': {
+      return { success: true, data };
     }
     default:
       return { success: false, error: new Error('Unknown content type') };

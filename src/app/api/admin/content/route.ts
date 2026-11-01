@@ -11,6 +11,7 @@ const FILE_MAP: Record<ContentType, string> = {
   experience: 'experience.json',
   certifications: 'certifications.json',
   workflow: 'workflow.json',
+  creative: 'creative.json',
 };
 
 export async function GET(request: Request) {

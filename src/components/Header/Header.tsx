@@ -60,7 +60,7 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className={styles.nav} aria-label="Main navigation">
-            {siteConfig.navLinks.map((link) => (
+            {(profileData.navLinks || siteConfig.navLinks).map((link) => (
               <a key={link.href} href={link.href} className={styles.navLink}>
                 {link.label}
               </a>
@@ -96,8 +96,8 @@ export default function Header() {
             {/* WhatsApp (Always visible) */}
             <a
               id="btn-header-whatsapp"
-              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
-                siteConfig.whatsappMessage
+              href={`https://wa.me/${(profileData.contact?.whatsapp || siteConfig.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(
+                profileData.contact?.whatsappMessage || siteConfig.whatsappMessage
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -110,7 +110,7 @@ export default function Header() {
             {/* Desktop Resume Button */}
             <a
               id="btn-header-resume"
-              href={siteConfig.resumeUrl}
+              href={profileData.contact?.resumeUrl || siteConfig.resumeUrl}
               download
               className={`btn btn--primary ${styles.desktopResumeBtn}`}
             >
@@ -158,7 +158,7 @@ export default function Header() {
               </div>
 
               <nav className={styles.mobileNavList}>
-                {siteConfig.navLinks.map((link) => (
+                {(profileData.navLinks || siteConfig.navLinks).map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
@@ -193,8 +193,8 @@ export default function Header() {
               {/* Mobile Action CTAs */}
               <div className={styles.mobileCtas}>
                 <a
-                  href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
-                    siteConfig.whatsappMessage
+                  href={`https://wa.me/${(profileData.contact?.whatsapp || siteConfig.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(
+                    profileData.contact?.whatsappMessage || siteConfig.whatsappMessage
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -206,7 +206,7 @@ export default function Header() {
                 </a>
 
                 <a
-                  href={siteConfig.resumeUrl}
+                  href={profileData.contact?.resumeUrl || siteConfig.resumeUrl}
                   download
                   className="btn btn--primary"
                   onClick={handleNavClick}

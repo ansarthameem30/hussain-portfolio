@@ -42,5 +42,18 @@
     "linkedin": "https://www.linkedin.com/in/malik-hussain-008003222",
     "calendarLink": "#book-call",
     "resumeUrl": "/Abdul-Malik-Hussain-Performance-Marketing.pdf"
+  },
+  "navLinks": [
+    { "label": "Home", "href": "#hero" },
+    { "label": "Results", "href": "#results" },
+    { "label": "About", "href": "#about" },
+    { "label": "Expertise", "href": "#expertise" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Certifications", "href": "#certifications" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "footer": {
+    "copyright": "© 2026 Abdul Malik Hussain K. Chennai, India.",
+    "subtext": "Senior Performance Marketer · Paid Media Lead"
   }
 }
