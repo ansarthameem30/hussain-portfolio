@@ -5,6 +5,7 @@ import { z } from 'zod';
 // ==========================================
 export const ContactLinksSchema = z.object({
   email: z.string().email(),
+  phone: z.string().optional(),
   whatsapp: z.string(),
   whatsappMessage: z.string(),
   linkedin: z.string().url(),
@@ -33,6 +34,7 @@ export const ProfileSchema = z.object({
   smallLine: z.string(),
   headshot: z.string().optional(),
   contact: ContactLinksSchema,
+  languages: z.array(z.string()).optional(),
   navLinks: z
     .array(
       z.object({

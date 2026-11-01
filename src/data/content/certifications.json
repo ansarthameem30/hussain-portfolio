@@ -1,74 +1,74 @@
 [
   {
+    "id": "cert-digital-marketing-program",
+    "name": "4-Month Digital Marketing Program (AIDMSPC — SEM, SMM, Display, Meta)",
+    "issuer": "AIDMSPC Academy",
+    "issued": "Comprehensive Training",
+    "status": "no-expiry",
+    "statusLabel": "Completed",
+    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
+  },
+  {
     "id": "cert-google-ads",
     "name": "Google Ads Search Certification",
     "issuer": "Google Skillshop",
     "issued": "Aug 2025",
-    "status": "expired",
-    "statusLabel": "Expired Aug 2026",
+    "status": "active",
+    "statusLabel": "Certified",
     "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
   },
   {
     "id": "cert-google-ads-masterclass",
-    "name": "The Complete Google Ads Masterclass 2025",
-    "issuer": "Udemy",
+    "name": "Google Ads Master Class (Search, Display, Video & PMax)",
+    "issuer": "Master Class Series",
     "issued": "Aug 2025",
     "status": "no-expiry",
-    "statusLabel": "No expiry",
+    "statusLabel": "Completed",
+    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
+  },
+  {
+    "id": "cert-ga4",
+    "name": "Google Analytics 4 (GA4) Certification",
+    "issuer": "Google Skillshop",
+    "issued": "Oct 2025",
+    "status": "active",
+    "statusLabel": "Certified",
+    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
+  },
+  {
+    "id": "cert-semrush-keyword",
+    "name": "Keyword Research Essentials with Semrush",
+    "issuer": "Semrush Academy",
+    "issued": "Oct 2025",
+    "status": "active",
+    "statusLabel": "Certified",
+    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
+  },
+  {
+    "id": "cert-cro",
+    "name": "Conversion Rate Optimization (CRO) Specialist",
+    "issuer": "Professional Development",
+    "issued": "2025",
+    "status": "no-expiry",
+    "statusLabel": "Completed",
     "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
   },
   {
     "id": "cert-ms-search",
     "name": "Microsoft Advertising Search Certification",
-    "issuer": "Microsoft",
+    "issuer": "Microsoft Advertising",
     "issued": "Jan 2025",
-    "status": "expired",
-    "statusLabel": "Expired Jan 2026",
-    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
-  },
-  {
-    "id": "cert-ms-display",
-    "name": "Microsoft Advertising Display & Video Certification",
-    "issuer": "Microsoft",
-    "issued": "Jan 2025",
-    "status": "expired",
-    "statusLabel": "Expired Jan 2026",
-    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
-  },
-  {
-    "id": "cert-semrush",
-    "name": "Keyword Research Essentials with Semrush",
-    "issuer": "Semrush",
-    "issued": "Oct 2025",
     "status": "active",
-    "statusLabel": "Expires Oct 2026",
-    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
-  },
-  {
-    "id": "cert-ai-marketing",
-    "name": "AI-Powered Digital Marketing Specialist Course",
-    "issuer": "Tuberbug Digital Marketing Academy",
-    "issued": "Dec 2025",
-    "status": "no-expiry",
-    "statusLabel": "No expiry",
-    "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
-  },
-  {
-    "id": "cert-ai-guide",
-    "name": "The Complete AI Guide: 50+ Generative AI Tools",
-    "issuer": "Udemy",
-    "issued": "Jan 2026",
-    "status": "no-expiry",
-    "statusLabel": "No expiry",
+    "statusLabel": "Certified",
     "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
   },
   {
     "id": "cert-wordpress",
-    "name": "WordPress 2025: The Complete WordPress Website Course",
-    "issuer": "Udemy",
+    "name": "WordPress Website Course",
+    "issuer": "Web Architecture Series",
     "issued": "Sep 2025",
     "status": "no-expiry",
-    "statusLabel": "No expiry",
+    "statusLabel": "Completed",
     "credentialUrl": "https://www.linkedin.com/in/malik-hussain-008003222"
   }
 ]

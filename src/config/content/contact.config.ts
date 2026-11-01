@@ -1,28 +1,30 @@
 /**
  * Contact section configuration
+ * Synced with Abdul Malik Hussain's contact information.
  */
 
 export const contactConfig = {
-  heading: "Let's grow your leads.",
+  heading: "Let's grow your qualified pipeline.",
   subheading:
-    "Hiring a performance marketer who can raise leads and lower cost? Send me a message and I'll reply within a day.",
+    "Looking for a Senior Campaign Manager who cuts cost-per-lead and scales multi-million dollar ad spend? Send me a message or connect directly on WhatsApp.",
 
   links: {
-    email: "hello@abdulmalik.dev",       // Replace with real email
-    whatsapp: "+919876543210",           // Replace with real number
+    email: "malikhussain3013@gmail.com",
+    phone: "+91-7395879451",
+    whatsapp: "+917395879451",
     whatsappMessage:
-      "Hi Abdul, I came across your portfolio and would like to connect.",
+      "Hi Abdul, I came across your portfolio and would like to discuss campaign management / performance marketing opportunities.",
     linkedin: "https://www.linkedin.com/in/malik-hussain-008003222",
-    calendarLink: "#book-call",          // Replace with real Calendly link
+    calendarLink: "#book-call",
     resumeUrl: "/Abdul-Malik-Hussain-Performance-Marketing.pdf",
   },
 
   form: {
     namePlaceholder: "Your name",
-    emailPlaceholder: "Your email",
-    messagePlaceholder: "Tell me about the role or project…",
+    emailPlaceholder: "Your work email",
+    messagePlaceholder: "Tell me about your campaign goals, brand, or role…",
     submitLabel: "Send message",
-    successMessage: "Got it — I'll reply within a day. 🙌",
+    successMessage: "Message received! I will review your inquiry and reply within 24 hours. 🙌",
   },
 
   checkItems: [
@@ -30,23 +32,23 @@ export const contactConfig = {
       id: "check-1",
       title: "Search terms that waste spend",
       description:
-        "I pull the search terms report first. Irrelevant clicks burn budget and inflate cost per lead.",
+        "I audit the search terms report first. Irrelevant clicks burn budget and inflate cost per lead.",
     },
     {
       id: "check-2",
       title: "Conversion tracking that isn't firing",
       description:
-        "If the data isn't right, every optimisation decision is wrong. Tracking comes before anything else.",
+        "If conversion signals and offline conversions aren't synced, smart bidding optimizes for the wrong events.",
     },
     {
       id: "check-3",
       title: "Budget spread across weak campaigns",
       description:
-        "Budget should go where leads actually come from — not spread evenly across campaigns that aren't performing.",
+        "Budget should allocate dynamically where high-intent qualified leads convert at target CPL — not evenly dispersed.",
     },
   ],
 
   footer: {
-    copyright: "© 2026 Abdul Malik Hussain. Chennai, India.",
+    copyright: "© 2026 Abdul Malik Hussain. Chennai, Tamil Nadu, India.",
   },
 };

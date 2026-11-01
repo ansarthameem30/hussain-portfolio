@@ -1,52 +1,55 @@
 /**
  * Site-wide configuration
- * Edit this file to update metadata, SEO, and social links.
- * No code changes needed — just update the values here.
+ * Synced with Abdul Malik Hussain's resume and portfolio CMS.
  */
 
 export const siteConfig = {
   // ─── Identity ──────────────────────────────────────────────────────────────
   name: "Abdul Malik Hussain",
-  title: "Abdul Malik Hussain | Senior Performance Marketer, Chennai",
+  title: "Abdul Malik Hussain | Senior Campaign Manager & Paid Media Specialist",
   shortTitle: "Abdul Malik",
-  role: "Senior Performance Marketer · Paid Media",
+  role: "Senior Campaign Manager · Paid Media & SEM Specialist",
   tagline: "Leads up 141%. Cost per lead down 56%.",
-  location: "Chennai, India",
-  availability: "Open to performance marketing roles",
+  location: "Chennai, Tamil Nadu, India",
+  availability: "Open to senior campaign management & performance marketing roles",
   founded: "2026",
 
   // ─── SEO ───────────────────────────────────────────────────────────────────
   description:
-    "Senior Performance Marketer with 4+ years in Google, Microsoft and Meta Ads. Leads up 141%, cost per lead down 56%. See my case studies.",
+    "Senior Campaign Manager with 4+ years running $4–5M+ monthly ad spend across Google Ads, Microsoft Ads, Meta, and YouTube. Cutting cost-per-lead up to 90% and growing qualified pipeline.",
   keywords: [
+    "Abdul Malik Hussain",
+    "Senior Campaign Manager",
     "Performance Marketer",
+    "Paid Media Specialist",
     "Google Ads",
     "Microsoft Ads",
     "Meta Ads",
-    "Paid Media",
+    "SEM Specialist",
+    "YouTube Ads",
     "Lead Generation",
     "PPC",
-    "Campaign Manager",
     "Chennai",
     "Digital Marketing",
   ],
-  canonicalUrl: "https://abdulmalik.dev", // Update with real domain
+  canonicalUrl: "https://abdulmalik.dev",
 
   // ─── Open Graph / Social Sharing ───────────────────────────────────────────
   ogImage: "/og-image.png",
-  ogImageAlt: "Abdul Malik Hussain – Senior Performance Marketer",
-  twitterHandle: "@abdulmalik", // Update if exists
+  ogImageAlt: "Abdul Malik Hussain – Senior Campaign Manager & Paid Media Specialist",
+  twitterHandle: "@abdulmalik",
 
   // ─── Contact ───────────────────────────────────────────────────────────────
-  email: "hello@abdulmalik.dev", // Replace with real email
-  whatsapp: "+919876543210", // Replace with real number
-  whatsappMessage: "Hi Abdul, I came across your portfolio and would like to connect.",
+  email: "malikhussain3013@gmail.com",
+  phone: "+91-7395879451",
+  whatsapp: "+917395879451",
+  whatsappMessage: "Hi Abdul, I came across your portfolio and would like to discuss campaign management / performance marketing opportunities.",
   linkedin: "https://www.linkedin.com/in/malik-hussain-008003222",
-  calendarLink: "#book-call", // Replace with Calendly / Cal.com link
+  calendarLink: "#book-call",
 
   // ─── Assets ────────────────────────────────────────────────────────────────
   resumeUrl: "/Abdul-Malik-Hussain-Performance-Marketing.pdf",
-  headshot: "/headshot.jpg", // Add real photo to /public
+  headshot: "/headshot.jpg",
 
   // ─── Navigation ────────────────────────────────────────────────────────────
   navLinks: [
@@ -54,8 +57,10 @@ export const siteConfig = {
     { label: "Results", href: "#results" },
     { label: "About", href: "#about" },
     { label: "Expertise", href: "#expertise" },
-    { label: "Experience", href: "#experience" },
+    { label: "Timeline", href: "#experience" },
     { label: "Certifications", href: "#certifications" },
+    { label: "Creative", href: "#creative" },
+    { label: "How I Work", href: "#how-i-work" },
     { label: "Contact", href: "#contact" },
   ],
 } as const;

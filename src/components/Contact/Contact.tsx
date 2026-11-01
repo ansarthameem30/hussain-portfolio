@@ -86,8 +86,8 @@ export default function Contact() {
                   <WhatsAppIcon size={18} />
                 </div>
                 <div>
-                  <span className={styles.linkLabel}>WhatsApp chat</span>
-                  <span className={styles.linkValue}>Instant response →</span>
+                  <span className={styles.linkLabel}>WhatsApp & Direct Call</span>
+                  <span className={styles.linkValue}>{profileData.contact?.phone || '+91-7395879451'}</span>
                 </div>
               </a>
 
@@ -103,7 +103,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className={styles.linkLabel}>LinkedIn profile</span>
-                  <span className={styles.linkValue}>Connect on LinkedIn →</span>
+                  <span className={styles.linkValue}>linkedin.com/in/malik-hussain-008003222 →</span>
                 </div>
               </a>
 

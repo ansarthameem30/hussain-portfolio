@@ -1,67 +1,78 @@
 [
   {
-    "id": "skills-platforms",
-    "group": "Platforms",
-    "skills": ["Google Ads", "Microsoft Ads", "Yahoo Ads", "Meta Ads", "YouTube Ads"]
-  },
-  {
-    "id": "skills-campaign-types",
-    "group": "Campaign Types",
+    "id": "skills-ad-platforms",
+    "group": "Paid Media & Ad Platforms",
     "skills": [
-      "Search",
-      "Performance Max",
-      "Shopping & Merchant Center",
-      "Display",
-      "YouTube",
-      "Meta Lead Generation",
-      "Meta Conversion Campaigns"
+      "Google Ads (Search, Display, Performance Max)",
+      "Microsoft / Bing Ads",
+      "Meta Ads (Facebook & Instagram)",
+      "YouTube Ads",
+      "Yahoo Ads"
     ]
   },
   {
-    "id": "skills-optimisation",
-    "group": "Optimisation",
+    "id": "skills-campaign-strategy",
+    "group": "Strategy & Optimisation",
     "skills": [
-      "Smart Bidding",
-      "Keyword Research",
-      "Search Query Analysis",
-      "Negative Keywords",
-      "Budget Pacing",
-      "Ad Copy Testing",
-      "Audience Testing"
+      "Smart Bidding & Target CPA / ROAS",
+      "Keyword Research & Search Query Sculpting",
+      "A/B Copy & Landing Page Testing",
+      "CPL & ROAS Optimization",
+      "Conversion Rate Optimization (CRO)",
+      "Client Budget Growth & Upselling",
+      "Multi-Market Campaign Management",
+      "Cross-Channel Performance Analysis",
+      "Negative Keyword Mining",
+      "Budget Pacing & Delivery"
     ]
   },
   {
-    "id": "skills-tracking",
-    "group": "Tracking & Reporting",
+    "id": "skills-analytics-martech",
+    "group": "Analytics & MarTech Stack",
     "skills": [
-      "CPL",
-      "Conversions",
-      "CTR",
-      "CPC",
-      "Impression Share",
-      "Quality Score",
-      "Excel Reports",
-      "Client-ready Campaign Reviews"
+      "Google Analytics 4 (GA4)",
+      "Google Tag Manager (GTM)",
+      "Google Search Console",
+      "Data Studio / Looker Studio",
+      "NinjaCat",
+      "TapClicks",
+      "Simpli.fi",
+      "ReachLocal",
+      "Salesforce",
+      "Asana"
+    ]
+  },
+  {
+    "id": "skills-industries",
+    "group": "Industry Expertise",
+    "skills": [
+      "Home Services (HVAC, Roofing, Windows, Bathrooms)",
+      "Retail & E-commerce",
+      "Healthcare",
+      "Real Estate",
+      "Powersports",
+      "Higher Education"
     ]
   },
   {
     "id": "skills-creative",
-    "group": "Creative",
-    "skills": ["Social Media Posts", "Reels"]
+    "group": "Creative & Content",
+    "skills": [
+      "Social Media Posts & Ad Creatives",
+      "High-Hook Video Reels (9:16)",
+      "Scroll-Stopping Direct Response Hooks",
+      "Creative Performance Testing",
+      "WordPress"
+    ]
   },
   {
     "id": "skills-leadership",
-    "group": "Leadership",
-    "skills": ["Live Campaign Review Sessions", "New Joiner Training"]
-  },
-  {
-    "id": "skills-foundations",
-    "group": "Foundations",
+    "group": "Leadership & Training",
     "skills": [
-      "SEO Fundamentals",
-      "Semrush Keyword Research",
-      "AI Tools for Marketing",
-      "WordPress"
+      "Client-Facing Performance Reviews",
+      "Executive Stakeholder Presentations",
+      "New Joiner Analyst Training",
+      "Live Account Audit Sessions"
     ]
   }
 ]
